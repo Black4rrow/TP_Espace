@@ -1,30 +1,37 @@
-package com.example.tp_mobile.model
-import com.fasterxml.jackson.annotation.JsonProperty
+package com.example.example
 
-data class Fireball(
-    @JsonProperty("date")
-    val date: String,
-    @JsonProperty("energy")
-    val energy: Double,
-    @JsonProperty("impact_e")
-    val impactE: Double,
-    @JsonProperty("vel")
-    val velocity: Long,
-    @JsonProperty("alt")
-    val alt: Long,
-    @JsonProperty("lon")
-    val longitude: Long,
-    @JsonProperty("lat")
-    val latitude: Long,
-    @JsonProperty("lon_dir")
-    val lonDir: String,
-    @JsonProperty("lat_dir")
-    val latDir: String,
-    @JsonProperty("coord")
-    val coord: Coord,
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.SerialName
+
+
+@Serializable
+data class FireballApiResponse (
+
+    @SerialName("total_count" ) var totalCount : Int?               = null,
+    @SerialName("results"     ) var results    : ArrayList<Fireball> = arrayListOf()
+
 )
 
-data class Coord(
-    val lon: Double,
-    val lat: Double,
+@Serializable
+data class Fireball (
+
+    @SerialName("date"     ) var date    : String? = null,
+    @SerialName("energy"   ) var energy  : Double? = null,
+    @SerialName("impact_e" ) var impactE : Double? = null,
+    @SerialName("vel"      ) var vel     : Int?    = null,
+    @SerialName("alt"      ) var alt     : Int?    = null,
+    @SerialName("lon"      ) var lon     : Int    = 0,
+    @SerialName("lat"      ) var lat     : Int    = 0,
+    @SerialName("lon_dir"  ) var lonDir  : String? = null,
+    @SerialName("lat_dir"  ) var latDir  : String? = null,
+    @SerialName("coord"    ) var coord   : Coord?  = Coord()
+
+)
+
+@Serializable
+data class Coord (
+
+    @SerialName("lon" ) var lon : Double? = null,
+    @SerialName("lat" ) var lat : Double? = null
+
 )
