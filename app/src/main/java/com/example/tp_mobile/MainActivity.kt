@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.fireballButton.setOnClickListener {
-            Log.e("qsdqsdqsd","Fireball button clicked")
             val intent = Intent(this, FireballListViewActivity::class.java)
             startActivity(intent)
         }
