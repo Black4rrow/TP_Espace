@@ -8,7 +8,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import com.example.tp_mobile.R
 import com.example.tp_mobile.model.retrofit.FireballApiController
-import com.example.tp_mobile.viewmodel.FireballListViewModel
+import com.example.tp_mobile.viewmodel.Fireball.FireballListViewModel
 
 class FireballListViewActivity : AppCompatActivity() {
 
