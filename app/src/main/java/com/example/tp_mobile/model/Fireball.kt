@@ -19,7 +19,7 @@ data class Fireball (
     @SerialName("energy"   ) var energy  : Double? = null,
     @SerialName("impact_e" ) var impactE : Double? = null,
     @SerialName("vel"      ) var vel     : Int?    = null,
-    @SerialName("alt"      ) var alt     : Int?    = null,
+    @SerialName("alt"      ) var alt     : Double?    = null,
     @SerialName("lon"      ) var lon     : Int    = 0,
     @SerialName("lat"      ) var lat     : Int    = 0,
     @SerialName("lon_dir"  ) var lonDir  : String? = null,
