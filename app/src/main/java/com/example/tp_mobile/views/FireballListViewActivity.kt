@@ -26,7 +26,7 @@ class FireballListViewActivity : AppCompatActivity() {
             insets
         }
 
-        viewModel = ViewModelProvider(this).get(FireballListViewModel::class.java)
+        viewModel = ViewModelProvider(this)[FireballListViewModel::class.java]
         viewModel.fetchFireballData()
 
     }
