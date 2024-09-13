@@ -1,4 +1,4 @@
-package com.example.tp_mobile.viewmodel.Fireball
+package com.example.tp_mobile.views.fireball
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
