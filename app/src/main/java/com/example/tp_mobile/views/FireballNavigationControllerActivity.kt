@@ -1,4 +1,4 @@
-package com.example.tp_mobile.views.fireball
+package com.example.tp_mobile.views
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -8,13 +8,16 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import com.example.tp_mobile.R
 import com.example.tp_mobile.model.retrofit.FireballApiController
-import com.example.tp_mobile.viewmodel.FireballListViewModel
+import com.example.tp_mobile.views.fireball.FireballListFragment
+import com.example.tp_mobile.views.fireball.FireballListViewModel
+import com.example.tp_mobile.views.fireball.FireballSectionFragment
 
-class FireballNavigationController : AppCompatActivity() {
+class FireballNavigationControllerActivity : AppCompatActivity() {
 
     val fireballApiController = FireballApiController()
     private lateinit var viewModel: FireballListViewModel
-
+    val fragmentManager = supportFragmentManager
+    val fragmentTransaction = fragmentManager.beginTransaction()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +33,8 @@ class FireballNavigationController : AppCompatActivity() {
         viewModel = ViewModelProvider(this)[FireballListViewModel::class.java]
         viewModel.fetchFireballData()
 
-    }
 
+        fragmentTransaction.replace(R.id.fragmentContainer, FireballSectionFragment.newInstance())
+        fragmentTransaction.commit()
+    }
 }

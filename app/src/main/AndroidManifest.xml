@@ -16,7 +16,7 @@
         android:theme="@style/Theme.TP_Mobile"
         tools:targetApi="31">
         <activity
-            android:name=".views.FireballListViewActivity"
+            android:name=".views.FireballNavigationControllerActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

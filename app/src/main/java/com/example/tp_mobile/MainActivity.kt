@@ -2,13 +2,12 @@ package com.example.tp_mobile
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.tp_mobile.databinding.ActivityMainBinding
-import com.example.tp_mobile.views.FireballListViewActivity
+import com.example.tp_mobile.views.FireballNavigationControllerActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.fireballButton.setOnClickListener {
-            val intent = Intent(this, FireballListViewActivity::class.java)
+            val intent = Intent(this, FireballNavigationControllerActivity::class.java)
             startActivity(intent)
         }
 
