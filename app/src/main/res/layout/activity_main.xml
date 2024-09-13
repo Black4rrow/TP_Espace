@@ -48,18 +48,38 @@
             android:layout_height="0dp"
             android:gravity="center"
             android:orientation="vertical"
-            android:showDividers="beginning|middle|end"
+            android:showDividers="beginning|end"
             android:divider="@drawable/tall_invisible_divider">
 
-            <ImageButton
-                android:id="@+id/fireballButton"
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="64dp"
-                android:src="@drawable/fireball"
-                android:background="@drawable/main_button_shape"
-                android:scaleType="center"
+                android:layout_height="wrap_content"
+                android:text="Catégorie"
+                android:layout_marginStart="5dp"
+                android:textColor="@color/white"
+                android:textSize="30dp"
+                />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp" />
+                android:layout_marginEnd="20dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/fireball_artic"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/main_button_shape"
+                    android:clipToOutline="true"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:onClick="onFireballButtonClick" />
+            </FrameLayout>
         </LinearLayout>
 
     </ScrollView>
