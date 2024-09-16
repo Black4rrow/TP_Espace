@@ -6,5 +6,5 @@ import retrofit2.http.Query
 
 interface FireballApiService{
     @GET("records")
-    suspend fun getFireballData(@Query("limit") limit: Int): FireballApiResponse
+    suspend fun getFireballData(@Query("limit") limit: Int, @Query("offset") offset: Int): FireballApiResponse
 }
