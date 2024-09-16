@@ -1,6 +1,7 @@
 package com.example.tp_mobile.views
 
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -31,7 +32,6 @@ class FireballNavigationControllerActivity : AppCompatActivity() {
         }
 
         viewModel = ViewModelProvider(this)[FireballListViewModel::class.java]
-        viewModel.fetchFireballData()
 
 
         fragmentTransaction.replace(R.id.fragmentContainer, FireballSectionFragment.newInstance())
