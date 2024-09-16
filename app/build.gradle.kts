@@ -62,4 +62,5 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.retrofit2.converter.gson)
     implementation(libs.logging.interceptor)
+    implementation(libs.lottie)
 }
