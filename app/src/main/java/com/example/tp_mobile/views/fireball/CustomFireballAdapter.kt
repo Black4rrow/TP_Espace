@@ -14,47 +14,7 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.time.ZonedDateTime
 
-//class CustomFireballAdapter(private val context: Context, private val data: List<Fireball>) : BaseAdapter() {
-//
-//    override fun getCount(): Int {
-//        return data.size
-//    }
-//
-//    override fun getItem(position: Int): Any {
-//        return data[position]
-//    }
-//
-//    override fun getItemId(position: Int): Long {
-//        return position.toLong()
-//    }
-//
-//    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-//        val inflater = LayoutInflater.from(context)
-//        val rowView = convertView ?: inflater.inflate(R.layout.fireball_item_layout, parent, false)
-//
-//        val fireball = data[position]
-//        val dateTextView = rowView.findViewById<TextView>(R.id.date)
-//        val speedTextView = rowView.findViewById<TextView>(R.id.speed_text)
-//        val powerTextView = rowView.findViewById<TextView>(R.id.power_text)
-//
-//
-//
-//        dateTextView.text = formatDate(fireball.date)
-//        speedTextView.text = "${fireball.vel} km/s"
-//        powerTextView.text = "${fireball.energy} J"
-//
-//        return rowView
-//    }
-//
-//    fun formatDate(dateString: String?): String {
-//        val zonedDateTime = ZonedDateTime.parse(dateString)
-//        val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
-//        val formattedDate = zonedDateTime.format(formatter)
-//        return formattedDate
-//    }
-//}
-
-class CustomFireballAdapter(private val context: Context, private val data: List<Fireball>) :
+class CustomFireballAdapter(private val onCLick:(Fireball) -> Unit, private val data: List<Fireball>) :
     RecyclerView.Adapter<CustomFireballAdapter.FireballViewHolder>() {
 
     // ViewHolder pour contenir les vues des éléments de la liste
@@ -80,6 +40,10 @@ class CustomFireballAdapter(private val context: Context, private val data: List
         holder.dateTextView.text = formatDate(fireball.date)
         holder.speedTextView.text = "${fireball.vel} km/s"
         holder.powerTextView.text = "${fireball.energy} J"
+
+        holder.itemView.setOnClickListener {
+            onCLick.invoke(fireball)
+        }
     }
 
     // Retourne le nombre d'éléments dans la liste

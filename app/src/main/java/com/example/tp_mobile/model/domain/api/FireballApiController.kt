@@ -1,9 +1,7 @@
-package com.example.tp_mobile.model.retrofit
+package com.example.tp_mobile.model.domain.api
 
-import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
-import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Protocol
 import okhttp3.logging.HttpLoggingInterceptor
@@ -11,7 +9,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-class FireballApiController {
+object FireballApiController {
 
     private val BASE_URL = "https://data.opendatasoft.com/api/explore/v2.1/catalog/datasets/nasa-fireball-and-bolide-reports@datastro/"
 

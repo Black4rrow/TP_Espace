@@ -3,6 +3,9 @@ import android.databinding.tool.writer.ViewBinding
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.google.android.libraries.mapsplatform.secrets.gradle.plugin)
+    alias(libs.plugins.kotlin.serialization)
+    id("androidx.navigation.safeargs.kotlin") version "2.8.1"
 }
 
 android {
@@ -52,6 +55,9 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.recyclerview)
+    implementation(libs.play.services.maps)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -65,4 +71,9 @@ dependencies {
     implementation(libs.logging.interceptor)
     implementation(libs.lottie)
     implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.serialization.core)
+    implementation(libs.kotlinx.serialization.json.v162)
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.1")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.1")
+    implementation("androidx.fragment:fragment-ktx:1.2.5")
 }
