@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.tp_mobile.R
 import com.example.tp_mobile.views.FireballNavigationControllerActivity
 
@@ -40,9 +41,9 @@ class FireballSectionFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         view.findViewById<Button>(R.id.listButton).setOnClickListener {
-            val parentFragmentTransaction = parentFragmentManager.beginTransaction()
-            parentFragmentTransaction.replace(R.id.fragmentContainer, FireballListFragment.newInstance())
-            parentFragmentTransaction.commit()
+            findNavController().navigate(
+                FireballSectionFragmentDirections.goToFireballList()
+            )
         }
 
     }

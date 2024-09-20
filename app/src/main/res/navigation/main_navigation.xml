@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation">
+
+    <activity
+        android:id="@+id/activity_main"
+        android:label="MainActivity"
+        android:name="com.example.tp_mobile.MainActivity"
+        tools:layout="@layout/activity_main">
+    </activity>
+
+    <activity
+        android:id="@+id/activity_fireball_navigation_controller"
+        android:label="FireballNavigationController"
+        android:name="com.example.tp_mobile.views.FireballNavigationControllerActivity"
+        tools:layout="@layout/activity_fireball_navigation_controller">
+    </activity>
+
+</navigation>

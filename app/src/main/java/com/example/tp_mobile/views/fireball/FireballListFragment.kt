@@ -6,9 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.example.example.Fireball
 import com.example.tp_mobile.R
 import com.example.tp_mobile.model.retrofit.FireballApiController
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonArray.Companion.serializer
 
 class FireballListFragment : Fragment() {
 
@@ -43,9 +48,14 @@ class FireballListFragment : Fragment() {
         }
 
         viewModel.items.observe(viewLifecycleOwner) { items ->
-            adapter = CustomFireballAdapter(requireContext(), items)
+            adapter = CustomFireballAdapter(onCLick = { fireball ->
+                findNavController().navigate(
+                    FireballListFragmentDirections.goToFireballView(fireball)
+                )
+            }, items)
             recyclerView.adapter = adapter
         }
+
 
     }
 
