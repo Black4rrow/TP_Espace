@@ -39,6 +39,7 @@
             android:exported="true">
         </activity>
 
+
         <activity android:name=".SplashScreen"
             android:exported="true" >
             <intent-filter>
@@ -46,6 +47,15 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name=".views.login.LoginActivity"
+            android:exported="false">
+        </activity>
+
+        <activity android:name=".views.login.CreateAccountActivity"
+            android:exported="false">
+
         </activity>
     </application>
 
