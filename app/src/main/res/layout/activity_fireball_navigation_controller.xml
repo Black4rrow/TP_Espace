@@ -9,14 +9,11 @@
     android:background="@drawable/space_background">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fireballHostFragment"
-        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:id="@+id/fireballFragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/navBar"
-        app:layout_constraintTop_toTopOf="parent"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/fireball_navigation" />
+        app:layout_constraintTop_toTopOf="parent"/>
     
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navBar"

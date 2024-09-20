@@ -5,7 +5,8 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.google.android.libraries.mapsplatform.secrets.gradle.plugin)
     alias(libs.plugins.kotlin.serialization)
-    id("androidx.navigation.safeargs.kotlin") version "2.8.1" }
+    id("androidx.navigation.safeargs.kotlin") version "2.8.1"
+}
 
 android {
     namespace = "com.example.tp_mobile"
@@ -72,5 +73,7 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.serialization.core)
     implementation(libs.kotlinx.serialization.json.v162)
-
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.1")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.1")
+    implementation("androidx.fragment:fragment-ktx:1.2.5")
 }

@@ -41,9 +41,9 @@ class FireballSectionFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         view.findViewById<Button>(R.id.listButton).setOnClickListener {
-            findNavController().navigate(
-                FireballSectionFragmentDirections.goToFireballList()
-            )
+            val parentFragmentTransaction = parentFragmentManager.beginTransaction()
+            parentFragmentTransaction.replace(R.id.fireballFragmentContainer, FireballListFragment.newInstance())
+            parentFragmentTransaction.commit()
         }
 
     }

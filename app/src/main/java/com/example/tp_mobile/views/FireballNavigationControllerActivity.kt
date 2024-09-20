@@ -6,15 +6,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import com.example.tp_mobile.R
-import com.example.tp_mobile.model.retrofit.FireballApiController
+import com.example.tp_mobile.model.domain.api.FireballApiController
 import com.example.tp_mobile.views.fireball.FireballListViewModel
 import com.example.tp_mobile.views.fireball.FireballSectionFragment
 
 class FireballNavigationControllerActivity : AppCompatActivity() {
 
-    val fireballApiController = FireballApiController()
+    val fireballApiController = FireballApiController
     private lateinit var viewModel: FireballListViewModel
     val fragmentManager = supportFragmentManager
     val fragmentTransaction = fragmentManager.beginTransaction()
@@ -33,9 +32,8 @@ class FireballNavigationControllerActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this)[FireballListViewModel::class.java]
 
 
-        findNavController(R.id.fireballHostFragment).navigate(
-            FireballNavigationControllerActivityDirections.goToFireballSection()
-        )
+        fragmentTransaction.replace(R.id.fireballFragmentContainer, FireballSectionFragment.newInstance())
+        fragmentTransaction.commit()
 
     }
 

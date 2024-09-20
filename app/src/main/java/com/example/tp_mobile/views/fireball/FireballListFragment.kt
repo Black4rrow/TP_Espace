@@ -5,15 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.RecyclerView
-import com.example.example.Fireball
 import com.example.tp_mobile.R
-import com.example.tp_mobile.model.retrofit.FireballApiController
-import kotlinx.serialization.KSerializer
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.JsonArray.Companion.serializer
+import com.example.tp_mobile.model.domain.api.FireballApiController
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class FireballListFragment : Fragment() {
 
@@ -21,7 +22,7 @@ class FireballListFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: CustomFireballAdapter
 
-    private val fireballApiController = FireballApiController()
+    private val fireballApiController = FireballApiController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,15 +44,24 @@ class FireballListFragment : Fragment() {
 
         recyclerView = view.findViewById(R.id.listView)
 
-        suspend {
-            fireballApiController.fireballApiService.getFireballData(20, 0)
+
+        lifecycleScope.launch {
+            var i = 0
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                while(true) {
+                    viewModel.fetchFireballDataAdd(2,i*2)
+                    delay(1000)
+                    i++
+                }
+            }
         }
 
         viewModel.items.observe(viewLifecycleOwner) { items ->
             adapter = CustomFireballAdapter(onCLick = { fireball ->
-                findNavController().navigate(
-                    FireballListFragmentDirections.goToFireballView(fireball)
-                )
+                viewModel.selectedFireball.value = fireball
+                val parentFragmentTransaction = parentFragmentManager.beginTransaction()
+                parentFragmentTransaction.replace(R.id.fireballFragmentContainer, FireballViewFragment.newInstance())
+                parentFragmentTransaction.commit()
             }, items)
             recyclerView.adapter = adapter
         }

@@ -6,12 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import com.example.tp_mobile.R
 import androidx.navigation.fragment.navArgs
+import com.example.example.Fireball
 
 class FireballViewFragment : Fragment() {
 
-    private val navArgs: FireballViewFragmentArgs by navArgs()
+    private lateinit var viewModel: FireballListViewModel
+    private var fireball: Fireball? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,8 +31,16 @@ class FireballViewFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(requireActivity())[FireballListViewModel::class.java]
+        fireball = viewModel.selectedFireball.value
+        viewModel.selectedFireball.observe(viewLifecycleOwner) {
+            fireball = it
+            updateFireballView()
+        }
+    }
 
-        Log.e("Fireball", navArgs.fireball.toString())
+    private fun updateFireballView() {
+
     }
 
     companion object {
