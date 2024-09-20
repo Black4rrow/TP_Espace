@@ -32,7 +32,10 @@ class FireballNavigationControllerActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this)[FireballListViewModel::class.java]
 
 
-        fragmentTransaction.replace(R.id.fireballFragmentContainer, FireballSectionFragment.newInstance())
+        fragmentTransaction.replace(
+            R.id.fireballFragmentContainer,
+            FireballSectionFragment.newInstance()
+        )
         fragmentTransaction.commit()
 
     }

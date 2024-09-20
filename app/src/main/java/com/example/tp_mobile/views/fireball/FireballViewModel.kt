@@ -17,9 +17,7 @@ class FireballListViewModel : ViewModel() {
     private val _items = MutableLiveData<List<Fireball>>()
     val items: LiveData<List<Fireball>> get() = _items
 
-    var fireballsList : MutableList<Fireball> = emptyList<Fireball>().toMutableList()
-
-    var selectedFireball = MutableLiveData<Fireball>()
+    var fireballsList: MutableList<Fireball> = emptyList<Fireball>().toMutableList()
 
 
     fun fetchFireballData(limit: Int, offset: Int) {

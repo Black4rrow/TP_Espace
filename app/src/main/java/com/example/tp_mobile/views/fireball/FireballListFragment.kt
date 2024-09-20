@@ -1,20 +1,15 @@
 package com.example.tp_mobile.views.fireball
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Lifecycle
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tp_mobile.R
 import com.example.tp_mobile.model.domain.api.FireballApiController
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 class FireballListFragment : Fragment() {
 
@@ -45,28 +40,39 @@ class FireballListFragment : Fragment() {
         recyclerView = view.findViewById(R.id.listView)
 
 
-        lifecycleScope.launch {
-            var i = 0
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                while(true) {
-                    viewModel.fetchFireballDataAdd(2,i*2)
-                    delay(1000)
-                    i++
-                }
+
+        setUpObserver()
+        setUpListener()
+        viewModel.fetchFireballDataAdd(20, 0)
+    }
+
+    private fun setUpListener() {
+        recyclerView.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+            if (!recyclerView.canScrollVertically(1)) {
+                viewModel.fetchFireballDataAdd(20, viewModel.items.value?.size ?: 0)
             }
         }
+    }
+
+    private fun setUpObserver() {
+
+        var fireballs = viewModel.items.value ?: emptyList()
+        fireballs = fireballs.toMutableList()
+
+        adapter = CustomFireballAdapter(onCLick = { fireball ->
+            val parentFragmentTransaction = parentFragmentManager.beginTransaction()
+            parentFragmentTransaction.replace(
+                R.id.fireballFragmentContainer,
+                FireballViewFragment.newInstance(fireball)
+            )
+            parentFragmentTransaction.commit()
+        }, fireballs)
+
+        recyclerView.adapter = adapter
 
         viewModel.items.observe(viewLifecycleOwner) { items ->
-            adapter = CustomFireballAdapter(onCLick = { fireball ->
-                viewModel.selectedFireball.value = fireball
-                val parentFragmentTransaction = parentFragmentManager.beginTransaction()
-                parentFragmentTransaction.replace(R.id.fireballFragmentContainer, FireballViewFragment.newInstance())
-                parentFragmentTransaction.commit()
-            }, items)
-            recyclerView.adapter = adapter
+            adapter.replaceAllData(items.toMutableList())
         }
-
-
     }
 
 

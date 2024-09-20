@@ -1,15 +1,13 @@
 package com.example.tp_mobile.views.fireball
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.tp_mobile.R
-import androidx.navigation.fragment.navArgs
 import com.example.example.Fireball
+import com.example.tp_mobile.R
 
 class FireballViewFragment : Fragment() {
 
@@ -32,11 +30,12 @@ class FireballViewFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(requireActivity())[FireballListViewModel::class.java]
-        fireball = viewModel.selectedFireball.value
-        viewModel.selectedFireball.observe(viewLifecycleOwner) {
-            fireball = it
+
+        arguments?.let {
+            fireball = it.getSerializable("fireball") as Fireball
             updateFireballView()
         }
+
     }
 
     private fun updateFireballView() {
@@ -45,9 +44,10 @@ class FireballViewFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance() =
+        fun newInstance(fireball: Fireball) =
             FireballViewFragment().apply {
                 arguments = Bundle().apply {
+                    putSerializable("fireball", fireball)
                 }
             }
     }

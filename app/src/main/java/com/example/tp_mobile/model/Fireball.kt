@@ -1,16 +1,14 @@
 package com.example.example
 
-import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerialName
+import java.io.Serializable
 
-
-@Serializable
 data class FireballApiResponse(
     @SerialName("total_count") var totalCount: Int? = null,
     @SerialName("results") var results: ArrayList<Fireball> = arrayListOf()
-)
+) : Serializable
 
-@Serializable
+
 data class Fireball(
     @SerialName("date") var date: String? = null,
     @SerialName("energy") var energy: Double? = null,
@@ -22,10 +20,9 @@ data class Fireball(
     @SerialName("lon_dir") var lonDir: String? = null,
     @SerialName("lat_dir") var latDir: String? = null,
     @SerialName("coord") var coord: Coord? = Coord()
-)
+) : Serializable
 
-@Serializable
 data class Coord(
     @SerialName("lon") var lon: Double? = null,
     @SerialName("lat") var lat: Double? = null
-)
+) : Serializable
