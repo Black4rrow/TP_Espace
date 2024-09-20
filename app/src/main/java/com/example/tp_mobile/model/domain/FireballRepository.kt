@@ -1,12 +1,9 @@
 package com.example.tp_mobile.model.domain
 
 import com.example.example.Fireball
-import com.example.example.FireballApiResponse
 import com.example.tp_mobile.model.domain.api.FireballApiController
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
-import retrofit2.Response
 
 
 object FireballRepository {

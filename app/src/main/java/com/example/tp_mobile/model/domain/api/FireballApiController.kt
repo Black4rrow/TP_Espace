@@ -11,7 +11,8 @@ import java.util.concurrent.TimeUnit
 
 object FireballApiController {
 
-    private val BASE_URL = "https://data.opendatasoft.com/api/explore/v2.1/catalog/datasets/nasa-fireball-and-bolide-reports@datastro/"
+    private val BASE_URL =
+        "https://data.opendatasoft.com/api/explore/v2.1/catalog/datasets/nasa-fireball-and-bolide-reports@datastro/"
 
     private val json = Json { ignoreUnknownKeys = true }
 
