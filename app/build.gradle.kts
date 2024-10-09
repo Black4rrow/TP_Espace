@@ -1,5 +1,3 @@
-import android.databinding.tool.writer.ViewBinding
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -76,4 +74,5 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.1")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.1")
     implementation("androidx.fragment:fragment-ktx:1.2.5")
+    implementation("com.google.android.material:material:1.9.0")
 }
