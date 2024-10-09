@@ -75,4 +75,5 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.7.1")
     implementation("androidx.fragment:fragment-ktx:1.2.5")
     implementation("com.google.android.material:material:1.9.0")
+    implementation("io.coil-kt:coil:1.3.2")
 }
