@@ -16,6 +16,8 @@
     android:id="@+id/listButton"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:backgroundTint="@color/button_background_theme"
+    android:textColor="@color/button_text_theme"
     android:text="Tout Voir"/>
 
 </FrameLayout>

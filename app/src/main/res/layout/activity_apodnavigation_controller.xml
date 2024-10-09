@@ -5,15 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.FireballNavigationControllerActivity"
-    android:background="@color/md_theme_primary">
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fireballFragmentContainer"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/navBar"
-        app:layout_constraintTop_toTopOf="parent"/>
+    tools:context=".views.APODNavigationControllerActivity">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navBar"
