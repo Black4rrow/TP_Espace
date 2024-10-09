@@ -22,15 +22,16 @@ class CreateAccountActivity : AppCompatActivity() {
         binding = ActivityCreateAccountBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val name = binding.username.text.toString()
-        val password = binding.password.text.toString()
-        val confirmPassword = binding.confirmPassword.text.toString()
+
         sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE)
         binding.registerButton.setOnClickListener{
+            val name = binding.username.text.toString()
+            val password = binding.password.text.toString()
+            val confirmPassword = binding.confirmPassword.text.toString()
             if(password == confirmPassword) {
                 createAccountViewModel.createAccount(
                     name,
-                    password,
+                    password.hashCode().toString(),
                     sharedPreferences,
                     this
                 )

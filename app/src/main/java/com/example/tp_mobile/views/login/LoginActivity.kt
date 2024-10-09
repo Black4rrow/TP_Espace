@@ -27,34 +27,14 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
         sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE)
 
-        val name = binding.username.text.toString()
-        val password = binding.password.text.toString()
 
-        /*
-        val sharedEdit = sharedPreferences.edit()
-
-        sharedEdit.putString("name", name)
-        sharedEdit.putString("passWord", password)
-        sharedEdit.apply()
-        Toast.makeText(this, "Data (sharedPreferences) Successful!", Toast.LENGTH_SHORT).show()
-        */
 
         binding.loginButton.setOnClickListener(View.OnClickListener {
-            /*
-            if (binding.username.text.toString() == "user" && binding.password.text.toString() == "1234"){
-                Toast.makeText(this, "Login Successful!", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, MainActivity::class.java)
-                Log.e("shared", sharedPreferences.getString("name",null).toString())
-                startActivity(intent)
-                finish()
-            } else {
-                Toast.makeText(this, "Login Failed!", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, CreateAccountActivity::class.java)
-                startActivity(intent)
-                finish()
-            }
-            */
-            val isSuccess = loginViewModel.login(this, sharedPreferences, name, password)
+            val name = binding.username.text.toString()
+            val password = binding.password.text.toString()
+            val isSuccess = loginViewModel.login(this, sharedPreferences, name,
+                password.hashCode().toString()
+            )
             if (isSuccess) {
                 val intent = Intent(this, MainActivity::class.java)
                 Log.e("shared", sharedPreferences.getString("name", null).toString())
