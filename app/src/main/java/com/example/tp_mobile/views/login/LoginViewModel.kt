@@ -19,7 +19,7 @@ class LoginViewModel: ViewModel() {
         users = UserRepository.getUsersInSharedPreferences(sharedPreferences).toMutableList()
 
         users.forEach { user ->
-            if (user.username == name && user.password == password) {
+            if (user.username == name && user.password.equals( password)) {
                 Toast.makeText(context, "Login Successful!", Toast.LENGTH_SHORT).show()
                 return true
             }
