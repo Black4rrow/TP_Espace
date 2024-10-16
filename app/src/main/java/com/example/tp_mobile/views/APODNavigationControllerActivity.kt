@@ -1,11 +1,15 @@
 package com.example.tp_mobile.views
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.MediaController
 import android.widget.TextView
+import android.widget.VideoView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -20,6 +24,7 @@ import com.example.tp_mobile.model.Apod
 import com.example.tp_mobile.views.apod.ApodViewModel
 import com.example.tp_mobile.views.login.LoginActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.serialization.json.Json
 
 class APODNavigationControllerActivity : AppCompatActivity() {
 
@@ -56,10 +61,26 @@ class APODNavigationControllerActivity : AppCompatActivity() {
 
     private fun updateView() {
         val apod = viewModel.apod.value
-
-
         val imageView : ImageView = findViewById(R.id.apod_image)
-        imageView.load(apod?.url)
+        val videoView : VideoView = findViewById(R.id.apod_video)
+        val mediaController = MediaController(this)
+
+        if(apod?.mediaType == "image" && apod.url != null){
+            imageView.visibility = View.VISIBLE
+            videoView.visibility = View.GONE
+            imageView.load(apod?.url)
+        }else if(apod?.mediaType == "video" && apod.url != null){
+            val videoUri = Uri.parse(apod?.url)
+            videoView.setVideoURI(videoUri)
+            videoView.setMediaController(mediaController)
+            mediaController.setAnchorView(videoView)
+
+            videoView.visibility = View.VISIBLE
+            imageView.visibility = View.GONE
+
+            videoView.start()
+        }
+
 
         val title : TextView = findViewById(R.id.image_title)
         title.text = apod?.title

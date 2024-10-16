@@ -1,7 +1,10 @@
 package com.example.tp_mobile.model.domain.api
 
+import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
+import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
 import okhttp3.Protocol
 import okhttp3.logging.HttpLoggingInterceptor
@@ -14,6 +17,7 @@ object ApodApiController {
     val API_KEY = "y69w6hgYMBKTO89BuJp51eYe667dPTmHIiTsg4FH"
 
     private val json = Json { ignoreUnknownKeys = true }
+    val contentType = "application/json".toMediaTypeOrNull()!!
 
     @OptIn(ExperimentalSerializationApi::class)
     private val retrofit: Retrofit by lazy {
@@ -30,7 +34,7 @@ object ApodApiController {
         Retrofit.Builder()
             .client(client)
             .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(Json { ignoreUnknownKeys = true }.asConverterFactory(contentType))
             .build()
     }
 
