@@ -1,5 +1,6 @@
 package com.example.tp_mobile.views.fireball
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -63,6 +64,11 @@ class CustomFireballAdapter(
     fun replaceAllData(newData: MutableList<Fireball>){
         data.clear()
         data.addAll(newData)
+        notifyDataSetChanged()
+    }
+
+    fun clearData(){
+        data.clear()
         notifyDataSetChanged()
     }
 }

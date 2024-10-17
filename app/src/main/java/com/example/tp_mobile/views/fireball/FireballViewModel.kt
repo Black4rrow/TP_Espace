@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.tp_mobile.model.Fireball
 import com.example.tp_mobile.model.domain.FireballRepository
 import com.example.tp_mobile.model.domain.api.FireballApiController
+import com.example.tp_mobile.utils.SortStyle
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 
@@ -20,9 +21,9 @@ class FireballListViewModel : ViewModel() {
     var fireballsList: MutableList<Fireball> = emptyList<Fireball>().toMutableList()
 
 
-    fun fetchFireballData(limit: Int, offset: Int) {
+    fun fetchFireballData(limit: Int, offset: Int, sortStyle: SortStyle?) {
         viewModelScope.launch {
-            FireballRepository.getFireball(limit, offset).catch {
+            FireballRepository.getFireball(limit, offset, sortStyle).catch {
                 Log.e("FireballListViewModel", "Error fetching data", it)
             }.collect {
                 _items.postValue(it)
@@ -30,9 +31,9 @@ class FireballListViewModel : ViewModel() {
         }
     }
 
-    fun fetchFireballDataAdd(limit: Int, offset: Int) {
+    fun fetchFireballDataAdd(limit: Int, offset: Int, sortStyle: SortStyle?) {
         viewModelScope.launch {
-            FireballRepository.getFireball(limit, offset).catch {
+            FireballRepository.getFireball(limit, offset, sortStyle).catch {
                 Log.e("FireballListViewModel", "Error fetching data", it)
             }.collect {
                 val newList = _items.value.orEmpty().toMutableList()
