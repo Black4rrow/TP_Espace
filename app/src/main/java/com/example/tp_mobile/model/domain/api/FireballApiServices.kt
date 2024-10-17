@@ -1,6 +1,6 @@
 package com.example.tp_mobile.model.domain.api
 
-import com.example.example.FireballApiResponse
+import com.example.tp_mobile.model.FireballApiResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 

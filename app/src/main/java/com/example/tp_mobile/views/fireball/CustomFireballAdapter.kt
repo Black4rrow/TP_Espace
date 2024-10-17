@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.example.Fireball
+import com.example.tp_mobile.model.Fireball
 import com.example.tp_mobile.R
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter

@@ -3,6 +3,7 @@ package com.example.tp_mobile.views
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -20,6 +21,7 @@ class FireballNavigationControllerActivity : AppCompatActivity() {
 
     val fireballApiController = FireballApiController
     private lateinit var viewModel: FireballListViewModel
+    lateinit var backButton: ImageButton
     val fragmentManager = supportFragmentManager
     val fragmentTransaction = fragmentManager.beginTransaction()
     lateinit var bottomNavigationView: BottomNavigationView
@@ -76,6 +78,11 @@ class FireballNavigationControllerActivity : AppCompatActivity() {
             } catch (e: Exception) {
                 throw e
             }
+        }
+
+        backButton = findViewById(R.id.back)
+        backButton.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
         }
     }
 

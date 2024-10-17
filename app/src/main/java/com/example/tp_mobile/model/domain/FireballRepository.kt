@@ -1,6 +1,6 @@
 package com.example.tp_mobile.model.domain
 
-import com.example.example.Fireball
+import com.example.tp_mobile.model.Fireball
 import com.example.tp_mobile.model.domain.api.FireballApiController
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

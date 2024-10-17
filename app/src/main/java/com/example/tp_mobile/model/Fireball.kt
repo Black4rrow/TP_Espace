@@ -1,4 +1,4 @@
-package com.example.example
+package com.example.tp_mobile.model
 
 import kotlinx.serialization.SerialName
 import java.io.Serializable
