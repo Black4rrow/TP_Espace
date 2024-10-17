@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.google.android.libraries.mapsplatform.secrets.gradle.plugin)
     alias(libs.plugins.kotlin.serialization)
     id("androidx.navigation.safeargs.kotlin") version "2.8.1"
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -56,6 +57,7 @@ dependencies {
     implementation(libs.play.services.maps)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.firebase.auth)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -76,4 +78,7 @@ dependencies {
     implementation("androidx.fragment:fragment-ktx:1.2.5")
     implementation("com.google.android.material:material:1.9.0")
     implementation("io.coil-kt:coil:1.3.2")
+
+    implementation(platform("com.google.firebase:firebase-bom:33.4.0"))
+    implementation("com.google.firebase:firebase-analytics")
 }
