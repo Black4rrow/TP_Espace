@@ -31,11 +31,6 @@ class FireballNavigationControllerActivity : AppCompatActivity() {
         enableEdgeToEdge()
 
         setContentView(R.layout.activity_fireball_navigation_controller)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
 
         viewModel = ViewModelProvider(this)[FireballListViewModel::class.java]
 
