@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.example.Fireball
+import com.example.tp_mobile.model.Fireball
 import com.example.tp_mobile.model.domain.FireballRepository
 import com.example.tp_mobile.model.domain.api.FireballApiController
 import kotlinx.coroutines.flow.catch

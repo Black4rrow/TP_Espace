@@ -8,12 +8,15 @@
     tools:context=".views.FireballNavigationControllerActivity"
     android:background="@color/md_theme_primary">
 
+    <include android:id="@+id/topMenu"
+        layout="@layout/top_bar_menu"/>
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fireballFragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/navBar"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/topMenu"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navBar"

@@ -1,33 +1,22 @@
 package com.example.tp_mobile.views.fireball
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.tp_mobile.R
+import com.example.tp_mobile.model.Fireball
 import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
 class FireballMapFragment : Fragment() {
 
-    private val callback = OnMapReadyCallback { googleMap ->
-        /**
-         * Manipulates the map once available.
-         * This callback is triggered when the map is ready to be used.
-         * This is where we can add markers or lines, add listeners or move the camera.
-         * In this case, we just add a marker near Sydney, Australia.
-         * If Google Play services is not installed on the device, the user will be prompted to
-         * install it inside the SupportMapFragment. This method will only be triggered once the
-         * user has installed Google Play services and returned to the app.
-         */
-        val sydney = LatLng(-34.0, 151.0)
-        googleMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
-    }
+    var fireball: Fireball? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,7 +28,32 @@ class FireballMapFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
-        mapFragment?.getMapAsync(callback)
+
+        // On verifie si la carte est déjà prête
+        mapFragment?.getMapAsync { googleMap ->
+            setupMap(googleMap)
+        }
+    }
+
+    private fun setupMap(googleMap: GoogleMap) {
+        fireball?.let {
+            Log.e("nathan", "setupMap: ${it.lat}, ${it.lon}")
+            val fireballLocation = LatLng(it.lat.toDouble(), it.lon.toDouble())
+            googleMap.addMarker(MarkerOptions().position(fireballLocation).title("Marker at fireball of date: ${it.date}"))
+            googleMap.moveCamera(CameraUpdateFactory.newLatLng(fireballLocation))
+        }
+    }
+
+    companion object {
+        @JvmStatic
+        fun newInstance(fireball: Fireball?) =
+            FireballMapFragment().apply {
+                this.fireball = fireball
+                arguments = Bundle().apply {
+                    putSerializable("fireball", fireball)
+                }
+            }
     }
 }

@@ -13,6 +13,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
 
     defaultConfig {
@@ -40,9 +41,6 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
-    }
-    buildFeatures{
-        viewBinding = true
     }
 }
 
@@ -78,7 +76,16 @@ dependencies {
     implementation("androidx.fragment:fragment-ktx:1.2.5")
     implementation("com.google.android.material:material:1.9.0")
     implementation("io.coil-kt:coil:1.3.2")
-
     implementation(platform("com.google.firebase:firebase-bom:33.4.0"))
     implementation("com.google.firebase:firebase-analytics")
+    val room_version = "2.6.0"
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
+    implementation("androidx.room:room-rxjava2:$room_version")
+    implementation("androidx.room:room-rxjava3:$room_version")
+    implementation("androidx.room:room-guava:$room_version")
+    testImplementation("androidx.room:room-testing:$room_version")
+    implementation("androidx.room:room-paging:$room_version")
+    implementation("androidx.activity:activity:1.6.0-alpha05")
 }
