@@ -34,10 +34,10 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:id="@+id/username"
+                    android:id="@+id/mail"
                     android:layout_marginTop="40dp"
                     android:padding="8dp"
-                    android:hint="Username"
+                    android:hint="Mail"
                     android:textColor="@color/black"
                     android:drawablePadding="8dp"
                     android:drawableLeft="@drawable/baseline_person_24"/>
@@ -101,7 +101,7 @@
             <Button
                 android:id="@+id/signUpButton"
                 android:textAllCaps="false"
-                android:layout_width="200dp"
+                android:layout_width="240dp"
                 android:layout_height="50dp"
                 android:background="@color/blue"
                 android:text="Sign up with Google"

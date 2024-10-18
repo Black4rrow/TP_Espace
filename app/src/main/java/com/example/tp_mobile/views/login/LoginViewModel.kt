@@ -16,21 +16,21 @@ class LoginViewModel : ViewModel() {
     suspend fun login(
         context: Context,
         sharedPreferences: SharedPreferences,
-        name: String,
+        mail: String,
         password: String
     ): Boolean {
         val isConnected = NetworkUtils.isInternetAvailable(context)
         users = UserRepository.getUsersInSharedPreferences(sharedPreferences).toMutableList()
         if (isConnected) {
             users.forEach { user ->
-                if (user.username == name && user.password.equals(password)) {
+                if (user.mail == mail && user.password.equals(password)) {
                     Toast.makeText(context, "Login Successful!", Toast.LENGTH_SHORT).show()
                     return true
                 }
             }
             return false
         }else{
-            return signIn(name,password)
+            return signIn(mail,password)
         }
     }
 

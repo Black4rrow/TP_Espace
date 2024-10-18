@@ -29,7 +29,7 @@ class CreateAccountActivity : AppCompatActivity() {
 
         sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE)
         binding.registerButton.setOnClickListener {
-            val name = binding.username.text.toString()
+            val name = binding.mail.text.toString()
             val password = binding.password.text.toString()
             val confirmPassword = binding.confirmPassword.text.toString()
 

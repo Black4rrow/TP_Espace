@@ -40,34 +40,33 @@ class LoginActivity : AppCompatActivity() {
 
 
 
-        binding.loginButton.setOnClickListener(View.OnClickListener {
-            val name = binding.username.text.toString()
-            val password = binding.password.text.toString()
+        binding.loginButton.setOnClickListener {
+            val inputMail = binding.mail
+            val inputPassword = binding.password
+            val mail = inputMail.text.toString()
+            val password = inputPassword.text.toString()
 
-/*
-            val isSuccess = loginViewModel.login(this, sharedPreferences, name,
-                password.hashCode().toString()
-            )
-            if (isSuccess) {
-                val intent = Intent(this, MainActivity::class.java)
-                Log.e("shared", sharedPreferences.getString("name", null).toString())
-                startActivity(intent)
-                finish()
-            } else {
-                Toast.makeText(this, "Login Failed! try again", Toast.LENGTH_SHORT).show()
+
+            if (mail.isBlank()) {
+                inputMail.error = "Veuillez svp renseigner votre adresse mail"
+            } else if (!mail.contains("@")) {
+                inputMail.error = "Veuillez svp renseigner une adresse mail valide"
+            } else if (password.isBlank()) {
+                inputPassword.error = "Veuillez svp renseigner votre mot de passe"
+            } else if (password.length < 6) {
+                inputPassword.error = "Votre mot de passe doit contenir au minimum 6 caractères"
             }
-
- */
 
 
             loginViewModel.viewModelScope.launch {
                 loginViewModel.login(
-                    this@LoginActivity, sharedPreferences, name,
+                    this@LoginActivity, sharedPreferences, mail,
                     password.hashCode().toString()
                 )
 
                 withContext(Dispatchers.Main) {
-                    Toast.makeText(this@LoginActivity, "Vous êtes connecté", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@LoginActivity, "Vous êtes connecté", Toast.LENGTH_SHORT)
+                        .show()
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
                     startActivity(intent)
                     finish()
@@ -75,11 +74,7 @@ class LoginActivity : AppCompatActivity() {
             }
 
 
-
-
-
-
-        })
+        }
 
         binding.linkRegister.setOnClickListener(){
             val intent = Intent(this, CreateAccountActivity::class.java)
