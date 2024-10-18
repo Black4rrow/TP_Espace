@@ -18,13 +18,13 @@ class CreateAccountViewModel : ViewModel() {
     suspend fun createAccount(name : String, password : String, sharedPreferences: SharedPreferences, context: Context){
         var user = User(username = name, password = password)
         UserRepository.addUserToSharedPreferences(user,sharedPreferences)
-        //signUp(name,password)
+        signUp(name,password)
         Toast.makeText(context, "Login Successful!", Toast.LENGTH_SHORT).show()
 
 
     }
 
-    suspend fun signUp(email: String, password: String) {
+    private suspend fun signUp(email: String, password: String) {
         auth = Firebase.auth
         auth.createUserWithEmailAndPassword(email, password).await()
     }

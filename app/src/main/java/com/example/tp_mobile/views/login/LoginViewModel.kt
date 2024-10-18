@@ -6,36 +6,41 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import com.example.tp_mobile.model.User
 import com.example.tp_mobile.model.domain.UserRepository
-import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.auth
 import kotlinx.coroutines.tasks.await
 
 
 class LoginViewModel : ViewModel() {
     private lateinit var auth: FirebaseAuth
     private var users = mutableListOf<User>()
-    fun login(
+    suspend fun login(
         context: Context,
         sharedPreferences: SharedPreferences,
         name: String,
         password: String
     ): Boolean {
-
+        val isConnected = NetworkUtils.isInternetAvailable(context)
         users = UserRepository.getUsersInSharedPreferences(sharedPreferences).toMutableList()
-
-        users.forEach { user ->
-            if (user.username == name && user.password.equals(password)) {
-                Toast.makeText(context, "Login Successful!", Toast.LENGTH_SHORT).show()
-                return true
+        if (isConnected) {
+            users.forEach { user ->
+                if (user.username == name && user.password.equals(password)) {
+                    Toast.makeText(context, "Login Successful!", Toast.LENGTH_SHORT).show()
+                    return true
+                }
             }
+            return false
+        }else{
+            return signIn(name,password)
         }
-        return false
     }
 
-    suspend fun signIn(email: String, password: String) {
-        auth = Firebase.auth
-        auth.signInWithEmailAndPassword(email, password).await()
+    private suspend fun signIn(email: String, password: String): Boolean {
+        return try {
+            auth.signInWithEmailAndPassword(email, password).await()
+            true
+        } catch (e: Exception) {
+            false
+        }
     }
 
 
