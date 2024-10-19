@@ -6,7 +6,9 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import com.example.tp_mobile.model.User
 import com.example.tp_mobile.model.domain.UserRepository
+import com.google.common.reflect.TypeToken
 import com.google.firebase.auth.FirebaseAuth
+import com.google.gson.Gson
 import kotlinx.coroutines.tasks.await
 
 
@@ -41,6 +43,21 @@ class LoginViewModel : ViewModel() {
         } catch (e: Exception) {
             false
         }
+    }
+
+
+    fun isEmailAlreadyUsed(mail: String, sharedPreferences: SharedPreferences): Boolean {
+        val usersJson = sharedPreferences.getString("users", null)
+
+        if (usersJson.isNullOrEmpty()) {
+            return true
+        }
+
+        val gson = Gson()
+        val userListType = object : TypeToken<List<User>>() {}.type
+        val users: List<User> = gson.fromJson(usersJson, userListType)
+
+        return users.any { it.mail == mail }
     }
 
 
