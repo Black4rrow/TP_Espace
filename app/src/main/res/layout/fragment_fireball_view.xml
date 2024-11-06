@@ -34,14 +34,15 @@
 
         <ImageButton
             android:id="@+id/favIcon"
-            android:layout_width="32dp"
-            android:layout_height="wrap_content"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/report_date"
             app:layout_constraintBottom_toBottomOf="@id/report_date"
             android:src="@drawable/baseline_favorite_border_24"
             android:background="@null"
             app:tint="@color/white"
+            android:scaleType="fitCenter"
             />
 
         <FrameLayout

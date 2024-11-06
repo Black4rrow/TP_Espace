@@ -23,14 +23,16 @@ class FireballListViewModel : ViewModel() {
 
     var fireballsList: MutableList<Fireball> = emptyList<Fireball>().toMutableList()
 
-
-
-
     fun fetchFireballData(limit: Int, offset: Int, sortStyle: SortStyle?) {
         viewModelScope.launch {
             FireballRepository.getFireball(limit, offset, sortStyle).catch {
                 Log.e("FireballListViewModel", "Error fetching data", it)
             }.collect {
+                for(fireball in it){
+                 if(FireballRepository.isFavorite(fireball)){
+                     fireball.isFavorite = true
+                 }
+                }
                 _items.postValue(it)
             }
         }
@@ -41,6 +43,11 @@ class FireballListViewModel : ViewModel() {
             FireballRepository.getFireball(limit, offset, sortStyle).catch {
                 Log.e("FireballListViewModel", "Error fetching data", it)
             }.collect {
+                for(fireball in it){
+                    if(FireballRepository.isFavorite(fireball)){
+                        fireball.isFavorite = true
+                    }
+                }
                 val newList = _items.value.orEmpty().toMutableList()
                 newList.addAll(it)
                 _items.postValue(newList)
@@ -60,8 +67,12 @@ class FireballListViewModel : ViewModel() {
         }
     }
 
-    suspend fun isFavorite(fireball: Fireball): Boolean {
-        return FireballRepository.isFavorite(fireball)
+    fun isFavorite(fireball: Fireball): LiveData<Boolean> {
+        val isFavorite = MutableLiveData<Boolean>()
+        viewModelScope.launch {
+            isFavorite.postValue(FireballRepository.isFavorite(fireball))
+        }
+        return isFavorite
     }
 
 }

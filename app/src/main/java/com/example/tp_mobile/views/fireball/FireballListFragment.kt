@@ -1,6 +1,7 @@
 package com.example.tp_mobile.views.fireball
 
 import android.app.AlertDialog
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -62,9 +63,7 @@ class FireballListFragment : Fragment(), OnFireballFavoriteListener {
     }
 
     private fun showSortDialog() {
-        // Charger le layout personnalisé
         val dialogView = LayoutInflater.from(context).inflate(R.layout.popup_list_sort, null)
-
         val radioGroup = dialogView.findViewById<RadioGroup>(R.id.radioGroup)
         val closeButton = dialogView.findViewById<ImageButton>(R.id.close_button)
         val confirmButton = dialogView.findViewById<Button>(R.id.confirm_button)
@@ -130,19 +129,21 @@ class FireballListFragment : Fragment(), OnFireballFavoriteListener {
         viewModel.fetchFireballData(20, 0, sortingStyle)
     }
 
-    override fun onFavoriteClicked(fireball: Fireball, holder: CustomFireballAdapter.FireballViewHolder) {
-        lifecycleScope.launch {
-            val isFavorite = viewModel.isFavorite(fireball)
-
-            if (isFavorite) {
-                //viewModel.removeFavorite(fireball, requireContext())
-                Toast.makeText(context, "${fireball.date} retiré des favoris", Toast.LENGTH_SHORT).show()
+    override fun onFavoriteClicked(fireball: Fireball, holder: CustomFireballAdapter.FireballViewHolder, position: Int) {
+        viewModel.isFavorite(fireball).observe( viewLifecycleOwner){
+            if (it) {
+                viewModel.removeFavorite(fireball)
+                fireball.isFavorite = false
             } else {
-                //viewModel.addFavorite(fireball, requireContext())
-                Toast.makeText(context, "${fireball.date} ajouté aux favoris", Toast.LENGTH_SHORT).show()
+                viewModel.addFavorite(fireball)
+                fireball.isFavorite = true
             }
+
+            adapter.notifyItemChanged(position)
         }
+
     }
+
 
     private fun setUpListener() {
         recyclerView.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->

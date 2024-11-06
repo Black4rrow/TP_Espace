@@ -20,10 +20,12 @@ data class Fireball(
     @SerialName("lat") var lat: Int = 0,
     @SerialName("lon_dir") var lonDir: String? = null,
     @SerialName("lat_dir") var latDir: String? = null,
-    @SerialName("coord") var coord: Coord? = Coord()
+    @SerialName("coord") var coord: Coord? = Coord(),
 ) : Serializable {
+    var isFavorite: Boolean = false
+
     fun getDBId(): String {
-        return this.date + this.lon + this.lat
+        return this.date + "-" +  this.lon + "-" + this.lat
     }
 }
 
@@ -33,5 +35,5 @@ data class Coord(
 ) : Serializable
 
 interface OnFireballFavoriteListener {
-    fun onFavoriteClicked(fireball: Fireball, holder: CustomFireballAdapter.FireballViewHolder)
+    fun onFavoriteClicked(fireball: Fireball, holder: CustomFireballAdapter.FireballViewHolder, position: Int)
 }

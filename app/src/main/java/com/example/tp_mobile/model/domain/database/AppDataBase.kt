@@ -1,9 +1,10 @@
+package com.example.tp_mobile.model.domain.database
+
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.tp_mobile.model.FireballEntity
-import com.example.tp_mobile.model.domain.database.UserDB
 import com.example.tp_mobile.model.domain.database.dao.FireballDao
 
 @Database(entities = [FireballEntity::class], version = 2)
@@ -21,7 +22,7 @@ abstract class AppDatabase : RoomDatabase() {
                         instance = Room.databaseBuilder(
                             context.applicationContext,
                             AppDatabase::class.java,
-                            "magic-db"
+                            "space-db"
                         ).fallbackToDestructiveMigration()
                             .build()
                     }

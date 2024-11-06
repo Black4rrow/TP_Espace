@@ -4,6 +4,7 @@ import android.content.Context
 import com.example.tp_mobile.model.Fireball
 import com.example.tp_mobile.model.FireballEntity
 import com.example.tp_mobile.model.domain.api.FireballApiController
+import com.example.tp_mobile.model.domain.database.AppDatabase
 import com.example.tp_mobile.model.domain.database.dao.FireballDao
 import com.example.tp_mobile.utils.SortStyle
 import kotlinx.coroutines.flow.Flow

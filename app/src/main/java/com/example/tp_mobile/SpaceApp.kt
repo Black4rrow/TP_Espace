@@ -1,7 +1,7 @@
 package com.example.tp_mobile
 
-import AppDatabase
 import android.app.Application
+import com.example.tp_mobile.model.domain.database.AppDatabase
 import timber.log.Timber
 
 class SpaceApp: Application()  {
