@@ -7,10 +7,14 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.credentials.GetCredentialRequest
 import androidx.lifecycle.viewModelScope
 import com.example.tp_mobile.MainActivity
+import com.example.tp_mobile.R
 import com.example.tp_mobile.databinding.ActivityLoginBinding
+import com.google.android.libraries.identity.googleid.GetGoogleIdOption
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -21,8 +25,6 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var sharedPreferences: SharedPreferences
 
     private val loginViewModel: LoginViewModel by viewModels()
-
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,11 +51,11 @@ class LoginActivity : AppCompatActivity() {
                 inputPassword.error = "Veuillez svp renseigner votre mot de passe"
             } else if (password.length < 6) {
                 inputPassword.error = "Votre mot de passe doit contenir au minimum 6 caractères"
-            }else {
+            } else {
 
 
                 loginViewModel.viewModelScope.launch {
-                    if(loginViewModel.isEmailAlreadyUsed(mail, sharedPreferences)) {
+                    if (loginViewModel.isEmailAlreadyUsed(mail, sharedPreferences)) {
                         loginViewModel.login(
                             this@LoginActivity, sharedPreferences, mail,
                             password.hashCode().toString()
@@ -72,12 +74,13 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
-        binding.linkRegister.setOnClickListener(){
-            val intent = Intent(this, CreateAccountActivity::class.java)
-            startActivity(intent)
-            finish()
+
+        binding.signInGoogle.setOnClickListener {
+            loginViewModel.signInWithGoogle(this@LoginActivity)
         }
-
-
     }
+
+
+
+
 }

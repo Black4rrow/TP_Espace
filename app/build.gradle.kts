@@ -89,4 +89,16 @@ dependencies {
     testImplementation("androidx.room:room-testing:$room_version")
     implementation("androidx.room:room-paging:$room_version")
     implementation("androidx.activity:activity:1.6.0-alpha05")
+
+    implementation(libs.play.services.auth)
+    implementation(libs.androidx.credentials)
+    implementation(libs.androidx.credentials.play.services.auth)
+    implementation(libs.googleid)
+    implementation(libs.googleauth)
+
+    implementation(platform(libs.google.firebase.bom))
+
+    implementation(libs.google.firebase.auth)
+
+    implementation(libs.play.services.auth.v2100)
 }

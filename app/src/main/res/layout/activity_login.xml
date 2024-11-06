@@ -99,7 +99,7 @@
                 android:src="@drawable/google" />
 
             <Button
-                android:id="@+id/signInButton"
+                android:id="@+id/signInGoogle"
                 android:layout_width="240dp"
                 android:layout_height="50dp"
                 android:background="@color/blue"
