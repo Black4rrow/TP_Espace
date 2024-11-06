@@ -1,5 +1,6 @@
 package com.example.tp_mobile.model
 
+import com.example.tp_mobile.views.fireball.CustomFireballAdapter
 import kotlinx.serialization.SerialName
 import java.io.Serializable
 
@@ -19,10 +20,20 @@ data class Fireball(
     @SerialName("lat") var lat: Int = 0,
     @SerialName("lon_dir") var lonDir: String? = null,
     @SerialName("lat_dir") var latDir: String? = null,
-    @SerialName("coord") var coord: Coord? = Coord()
-) : Serializable
+    @SerialName("coord") var coord: Coord? = Coord(),
+) : Serializable {
+    var isFavorite: Boolean = false
+
+    fun getDBId(): String {
+        return this.date + "-" +  this.lon + "-" + this.lat
+    }
+}
 
 data class Coord(
     @SerialName("lon") var lon: Double? = null,
     @SerialName("lat") var lat: Double? = null
 ) : Serializable
+
+interface OnFireballFavoriteListener {
+    fun onFavoriteClicked(fireball: Fireball, holder: CustomFireballAdapter.FireballViewHolder, position: Int)
+}

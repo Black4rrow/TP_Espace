@@ -1,0 +1,88 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 2,
+    "identityHash": "d55cbee84808d90f3db5aee7c2831215",
+    "entities": [
+      {
+        "tableName": "favorites",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`date` TEXT NOT NULL, `energy` REAL, `impactE` REAL, `vel` INTEGER, `alt` REAL, `lon` INTEGER NOT NULL, `lat` INTEGER NOT NULL, `lonDir` TEXT, `latDir` TEXT, `compositeKey` TEXT NOT NULL, PRIMARY KEY(`compositeKey`))",
+        "fields": [
+          {
+            "fieldPath": "date",
+            "columnName": "date",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "energy",
+            "columnName": "energy",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "impactE",
+            "columnName": "impactE",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "vel",
+            "columnName": "vel",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "alt",
+            "columnName": "alt",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "lon",
+            "columnName": "lon",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lat",
+            "columnName": "lat",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lonDir",
+            "columnName": "lonDir",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "latDir",
+            "columnName": "latDir",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "compositeKey",
+            "columnName": "compositeKey",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "compositeKey"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'd55cbee84808d90f3db5aee7c2831215')"
+    ]
+  }
+}

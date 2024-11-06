@@ -43,12 +43,25 @@ class FireballViewFragment : Fragment() {
             fireball?.let {
                 updateFireballView()
             } ?: run {
-                //cas où fireball = null
             }
         }
 
         binding.mapButton.setOnClickListener {
             mapButtonClicked()
+        }
+
+        binding.favIcon.setOnClickListener{
+            favButtonClicked()
+        }
+
+        viewModel.isFavorite(fireball!!).observe( viewLifecycleOwner){
+            if (it) {
+                binding.favIcon.setImageResource(R.drawable.baseline_favorite_border_24)
+                binding.favIcon.setColorFilter(R.color.black)
+            } else {
+                binding.favIcon.setImageResource(R.drawable.baseline_favorite_24)
+                binding.favIcon.setColorFilter(R.color.red)
+            }
         }
     }
 
@@ -82,6 +95,22 @@ class FireballViewFragment : Fragment() {
             FireballMapFragment.newInstance(fireball)
         )
         parentFragmentTransaction.commit()
+    }
+
+    fun favButtonClicked(){
+        viewModel.isFavorite(fireball!!).observe( viewLifecycleOwner){
+            if (it) {
+                viewModel.removeFavorite(fireball!!)
+                fireball!!.isFavorite = false
+                binding.favIcon.setImageResource(R.drawable.baseline_favorite_border_24)
+                binding.favIcon.setColorFilter(R.color.black)
+            } else {
+                viewModel.addFavorite(fireball!!)
+                fireball!!.isFavorite = true
+                binding.favIcon.setImageResource(R.drawable.baseline_favorite_24)
+                binding.favIcon.setColorFilter(R.color.red)
+            }
+        }
     }
 
     companion object {
