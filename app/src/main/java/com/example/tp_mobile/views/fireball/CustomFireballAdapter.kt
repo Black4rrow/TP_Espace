@@ -4,16 +4,19 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tp_mobile.model.Fireball
 import com.example.tp_mobile.R
+import com.example.tp_mobile.model.OnFireballFavoriteListener
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
 class CustomFireballAdapter(
     private val onCLick: (Fireball) -> Unit,
-    private val data: MutableList<Fireball>
+    private val data: MutableList<Fireball>,
+    private val listener: OnFireballFavoriteListener
 ) :
     RecyclerView.Adapter<CustomFireballAdapter.FireballViewHolder>() {
 
@@ -23,6 +26,7 @@ class CustomFireballAdapter(
         val dateTextView: TextView = view.findViewById(R.id.date)
         val speedTextView: TextView = view.findViewById(R.id.speed_text)
         val powerTextView: TextView = view.findViewById(R.id.power_text)
+        val favButton: ImageButton = view.findViewById(R.id.fav_button)
     }
 
     // Crée les vues pour chaque élément de la liste
@@ -41,6 +45,10 @@ class CustomFireballAdapter(
 
         holder.speedTextView.text = "${fireball?.vel ?: "?"} km/s"
         holder.powerTextView.text = "${fireball?.energy ?: "?"} J"
+
+        holder.favButton.setOnClickListener {
+            listener.onFavoriteClicked(fireball, holder)
+        }
 
         holder.itemView.setOnClickListener {
             onCLick.invoke(fireball)

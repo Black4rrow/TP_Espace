@@ -19,7 +19,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class FireballNavigationControllerActivity : AppCompatActivity() {
 
-    val fireballApiController = FireballApiController
     private lateinit var viewModel: FireballListViewModel
     lateinit var backButton: ImageButton
     val fragmentManager = supportFragmentManager
