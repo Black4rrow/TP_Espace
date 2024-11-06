@@ -1,6 +1,7 @@
 package com.example.tp_mobile.views.fireball
 
 import android.app.AlertDialog
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,14 +11,19 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tp_mobile.R
+import com.example.tp_mobile.model.Fireball
+import com.example.tp_mobile.model.OnFireballFavoriteListener
 import com.example.tp_mobile.model.domain.api.FireballApiController
 import com.example.tp_mobile.utils.SortStyle
+import kotlinx.coroutines.launch
 
-class FireballListFragment : Fragment() {
+class FireballListFragment : Fragment(), OnFireballFavoriteListener {
 
     private lateinit var viewModel: FireballListViewModel
     private lateinit var recyclerView: RecyclerView
@@ -57,9 +63,7 @@ class FireballListFragment : Fragment() {
     }
 
     private fun showSortDialog() {
-        // Charger le layout personnalisé
         val dialogView = LayoutInflater.from(context).inflate(R.layout.popup_list_sort, null)
-
         val radioGroup = dialogView.findViewById<RadioGroup>(R.id.radioGroup)
         val closeButton = dialogView.findViewById<ImageButton>(R.id.close_button)
         val confirmButton = dialogView.findViewById<Button>(R.id.confirm_button)
@@ -125,6 +129,22 @@ class FireballListFragment : Fragment() {
         viewModel.fetchFireballData(20, 0, sortingStyle)
     }
 
+    override fun onFavoriteClicked(fireball: Fireball, holder: CustomFireballAdapter.FireballViewHolder, position: Int) {
+        viewModel.isFavorite(fireball).observe( viewLifecycleOwner){
+            if (it) {
+                viewModel.removeFavorite(fireball)
+                fireball.isFavorite = false
+            } else {
+                viewModel.addFavorite(fireball)
+                fireball.isFavorite = true
+            }
+
+            adapter.notifyItemChanged(position)
+        }
+
+    }
+
+
     private fun setUpListener() {
         recyclerView.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
             if (!recyclerView.canScrollVertically(1)) {
@@ -145,7 +165,7 @@ class FireballListFragment : Fragment() {
                 FireballViewFragment.newInstance(fireball)
             )
             parentFragmentTransaction.commit()
-        }, fireballs)
+        }, fireballs, this)
 
         recyclerView.adapter = adapter
 

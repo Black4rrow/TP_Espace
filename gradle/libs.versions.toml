@@ -2,7 +2,7 @@
 agp = "8.7.0"
 androidxNavigationFragmentKtx = "2.7.0"
 jacksonDatabind = "2.8.9"
-kotlin = "1.9.0"
+kotlin = "2.0.20"
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
