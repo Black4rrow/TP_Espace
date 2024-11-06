@@ -11,6 +11,8 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:context=".MainActivity">
 
         <androidx.cardview.widget.CardView
@@ -36,13 +38,13 @@
                     android:textSize="30dp" />
 
                 <EditText
-                    android:id="@+id/username"
+                    android:id="@+id/mail"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="40dp"
                     android:drawableLeft="@drawable/baseline_person_24"
                     android:drawablePadding="8dp"
-                    android:hint="Username"
+                    android:hint="Mail"
                     android:padding="8dp"
                     android:textColor="@color/black" />
                 />
@@ -79,11 +81,11 @@
             android:textSize="20dp" />
 
         <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginTop="50dp"
-            android:background="@drawable/border"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:background="@drawable/border">
 
             <ImageView
                 android:layout_width="28dp"
@@ -97,12 +99,12 @@
                 android:src="@drawable/google" />
 
             <Button
-                android:id="@+id/signInButton"
-                android:textAllCaps="false"
-                android:layout_width="200dp"
+                android:id="@+id/signInGoogle"
+                android:layout_width="240dp"
                 android:layout_height="50dp"
                 android:background="@color/blue"
                 android:text="Sign in with Google"
+                android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
