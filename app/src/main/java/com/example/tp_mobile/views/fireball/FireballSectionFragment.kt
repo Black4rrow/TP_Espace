@@ -1,11 +1,15 @@
 package com.example.tp_mobile.views.fireball
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.replace
+import com.example.tp_mobile.MainActivity
 import com.example.tp_mobile.R
 
 
@@ -45,6 +49,16 @@ class FireballSectionFragment : Fragment() {
             )
             parentFragmentTransaction.commit()
         }
+
+
+        requireActivity().findViewById<ImageButton>(R.id.back).setOnClickListener{
+            val intent = Intent(requireActivity(), MainActivity::class.java)
+            startActivity(intent)
+            requireActivity().overridePendingTransition(0,0)
+            requireActivity().finish()
+            requireActivity().overridePendingTransition(0,0)
+        }
+
 
     }
 

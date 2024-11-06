@@ -70,7 +70,9 @@ class LoginActivity : AppCompatActivity() {
                     Toast.makeText(this@LoginActivity, "Vous êtes connecté", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
                     startActivity(intent)
+                    overridePendingTransition(0,0)
                     finish()
+                    overridePendingTransition(0,0)
                 }
             }
 
@@ -84,7 +86,9 @@ class LoginActivity : AppCompatActivity() {
         binding.linkRegister.setOnClickListener(){
             val intent = Intent(this, CreateAccountActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(0,0)
             finish()
+            overridePendingTransition(0,0)
         }
 
 

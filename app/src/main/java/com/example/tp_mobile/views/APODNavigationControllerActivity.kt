@@ -10,6 +10,8 @@ import android.widget.ImageView
 import android.widget.MediaController
 import android.widget.TextView
 import android.widget.VideoView
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.addCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -22,6 +24,7 @@ import com.example.tp_mobile.databinding.ActivityApodnavigationControllerBinding
 import com.example.tp_mobile.databinding.ActivityMainBinding
 import com.example.tp_mobile.model.Apod
 import com.example.tp_mobile.views.apod.ApodViewModel
+import com.example.tp_mobile.views.fireball.FireballListFragment
 import com.example.tp_mobile.views.login.LoginActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.serialization.json.Json
@@ -36,7 +39,6 @@ class APODNavigationControllerActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_apodnavigation_controller)
 
         viewModel = ViewModelProvider(this)[ApodViewModel::class.java]
@@ -95,18 +97,14 @@ class APODNavigationControllerActivity : AppCompatActivity() {
                     R.id.home -> {
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
-                        true
-                    }
-
-                    R.id.apod -> {
-                        val intent = Intent(this, APODNavigationControllerActivity::class.java)
-                        startActivity(intent)
+                        overridePendingTransition(0,0)
                         true
                     }
 
                     R.id.profile -> {
                         val intent = Intent(this, LoginActivity::class.java)
                         startActivity(intent)
+                        overridePendingTransition(0,0)
                         true
                     }
 
@@ -120,7 +118,14 @@ class APODNavigationControllerActivity : AppCompatActivity() {
         backButton = findViewById(R.id.back)
         backButton.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
+            bottomNavigationView.selectedItemId = R.id.home
         }
+
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                bottomNavigationView.selectedItemId = R.id.home
+            }
+        })
 
     }
 }

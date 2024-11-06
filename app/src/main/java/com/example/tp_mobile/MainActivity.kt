@@ -2,6 +2,7 @@ package com.example.tp_mobile
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -19,7 +20,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         binding.fireballButton.setOnClickListener {
             val intent = Intent(this, FireballNavigationControllerActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(0,0)
         }
 
         setUpNavBar()
@@ -40,21 +41,18 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setOnItemSelectedListener {
             try {
                 when (it.itemId) {
-                    R.id.home -> {
-                        val intent = Intent(this, MainActivity::class.java)
-                        startActivity(intent)
-                        true
-                    }
 
                     R.id.apod -> {
                         val intent = Intent(this, APODNavigationControllerActivity::class.java)
                         startActivity(intent)
+                        overridePendingTransition(0,0)
                         true
                     }
 
                     R.id.profile -> {
                         val intent = Intent(this, LoginActivity::class.java)
                         startActivity(intent)
+                        overridePendingTransition(0,0)
                         true
                     }
 
@@ -64,6 +62,11 @@ class MainActivity : AppCompatActivity() {
                 throw e
             }
         }
+
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+            }
+        })
     }
 
 }

@@ -12,6 +12,7 @@ import android.widget.ImageButton
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -57,6 +58,8 @@ class FireballListFragment : Fragment(), OnFireballFavoriteListener {
         view.findViewById<ImageButton>(R.id.sortButton).setOnClickListener {
             showSortDialog()
         }
+
+        setUpNavigation()
 
 
         viewModel.fetchFireballDataAdd(20, 0, null)
@@ -171,6 +174,20 @@ class FireballListFragment : Fragment(), OnFireballFavoriteListener {
 
         viewModel.items.observe(viewLifecycleOwner) { items ->
             adapter.replaceAllData(items.toMutableList())
+        }
+    }
+
+    private fun setUpNavigation(){
+        requireActivity().findViewById<ImageButton>(R.id.back).setOnClickListener{
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fireballFragmentContainer, FireballSectionFragment.newInstance())
+                .commit()
+        }
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fireballFragmentContainer, FireballSectionFragment.newInstance())
+                .commit()
         }
     }
 

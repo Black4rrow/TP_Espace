@@ -47,7 +47,9 @@ class CreateAccountActivity : AppCompatActivity() {
                         Toast.makeText(this@CreateAccountActivity, "Compte créé", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this@CreateAccountActivity, MainActivity::class.java)
                         startActivity(intent)
+                        overridePendingTransition(0,0)
                         finish()
+                        overridePendingTransition(0,0)
                     }
                 }
             }
