@@ -27,7 +27,6 @@ class FireballNavigationControllerActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
 
         setContentView(R.layout.activity_fireball_navigation_controller)
 
@@ -44,35 +43,6 @@ class FireballNavigationControllerActivity : AppCompatActivity() {
     }
 
     private fun setUpNavBar() {
-        bottomNavigationView = findViewById(R.id.navBar)
-        bottomNavigationView.selectedItemId = View.NO_ID
-        bottomNavigationView.setOnItemSelectedListener {
-            try {
-                when (it.itemId) {
-                    R.id.home -> {
-                        val intent = Intent(this, MainActivity::class.java)
-                        startActivity(intent)
-                        true
-                    }
-
-                    R.id.apod -> {
-                        val intent = Intent(this, APODNavigationControllerActivity::class.java)
-                        startActivity(intent)
-                        true
-                    }
-
-                    R.id.profile -> {
-                        val intent = Intent(this, LoginActivity::class.java)
-                        startActivity(intent)
-                        true
-                    }
-
-                    else -> false
-                }
-            } catch (e: Exception) {
-                throw e
-            }
-        }
 
         backButton = findViewById(R.id.back)
         backButton.setOnClickListener {

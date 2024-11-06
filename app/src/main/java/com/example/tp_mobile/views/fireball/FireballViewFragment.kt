@@ -5,6 +5,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
+import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -63,6 +65,8 @@ class FireballViewFragment : Fragment() {
                 binding.favIcon.setColorFilter(R.color.red)
             }
         }
+
+        setUpNavigation()
     }
 
     private fun updateFireballView() {
@@ -110,6 +114,20 @@ class FireballViewFragment : Fragment() {
                 binding.favIcon.setImageResource(R.drawable.baseline_favorite_24)
                 binding.favIcon.setColorFilter(R.color.red)
             }
+        }
+    }
+
+    private fun setUpNavigation(){
+        requireActivity().findViewById<ImageButton>(R.id.back).setOnClickListener{
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fireballFragmentContainer, FireballListFragment.newInstance())
+                .commit()
+        }
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fireballFragmentContainer, FireballListFragment.newInstance())
+                .commit()
         }
     }
 
