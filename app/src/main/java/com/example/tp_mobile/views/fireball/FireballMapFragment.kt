@@ -5,6 +5,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import com.example.tp_mobile.R
 import com.example.tp_mobile.model.Fireball
@@ -35,6 +37,8 @@ class FireballMapFragment : Fragment() {
         mapFragment?.getMapAsync { googleMap ->
             setupMap(googleMap)
         }
+
+        setUpNavigation()
     }
 
     private fun setupMap(googleMap: GoogleMap) {
@@ -43,6 +47,20 @@ class FireballMapFragment : Fragment() {
             val fireballLocation = LatLng(it.lat.toDouble(), it.lon.toDouble())
             googleMap.addMarker(MarkerOptions().position(fireballLocation).title("Marker at fireball of date: ${it.date}"))
             googleMap.moveCamera(CameraUpdateFactory.newLatLng(fireballLocation))
+        }
+    }
+
+    private fun setUpNavigation(){
+        requireActivity().findViewById<ImageButton>(R.id.back).setOnClickListener{
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fireballFragmentContainer, FireballViewFragment.newInstance(fireball!!))
+                .commit()
+        }
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fireballFragmentContainer, FireballViewFragment.newInstance(fireball!!))
+                .commit()
         }
     }
 

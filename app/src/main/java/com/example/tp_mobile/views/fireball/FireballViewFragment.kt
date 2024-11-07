@@ -62,11 +62,11 @@ class FireballViewFragment : Fragment() {
 
         viewModel.isFavorite(fireball!!).observe(viewLifecycleOwner) {
             if (it) {
-                binding.favIcon.setImageResource(R.drawable.baseline_favorite_border_24)
-                binding.favIcon.setColorFilter(R.color.black)
-            } else {
                 binding.favIcon.setImageResource(R.drawable.baseline_favorite_24)
                 binding.favIcon.setColorFilter(R.color.red)
+            } else {
+                binding.favIcon.setImageResource(R.drawable.baseline_favorite_border_24)
+                binding.favIcon.setColorFilter(R.color.black)
             }
         }
 
