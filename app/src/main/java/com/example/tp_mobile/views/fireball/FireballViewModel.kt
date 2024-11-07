@@ -75,4 +75,12 @@ class FireballListViewModel : ViewModel() {
         return isFavorite
     }
 
+    fun getFavorites(): LiveData<List<Fireball>> {
+        val favorites = MutableLiveData<List<Fireball>>()
+        viewModelScope.launch {
+            favorites.postValue(FireballRepository.getFavorites())
+        }
+        return favorites
+    }
+
 }

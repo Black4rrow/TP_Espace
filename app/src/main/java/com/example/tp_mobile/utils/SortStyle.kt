@@ -8,5 +8,4 @@ enum class SortStyle( val orderValueApi: String?) {
     SPEED_DESC("vel desc"),
     RADIATED_ENERGY_ASC("energy asc"),
     RADIATED_ENERGY_DESC("energy desc"),
-    FAVORITES(null)
 }

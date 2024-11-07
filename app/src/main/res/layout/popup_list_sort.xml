@@ -111,15 +111,6 @@
             android:textColor="@color/md_theme_onPrimaryContainer"
             android:textSize="18sp"
             android:paddingStart="8dp" />
-
-        <RadioButton
-            android:id="@+id/radioFavorites"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Favorites"
-            android:textColor="@color/md_theme_onPrimaryContainer"
-            android:textSize="18sp"
-            android:paddingStart="8dp" />
     </RadioGroup>
 
     <!-- Bouton de confirmation -->

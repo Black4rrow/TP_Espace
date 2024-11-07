@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
@@ -22,6 +23,7 @@ import com.example.tp_mobile.model.Fireball
 import com.example.tp_mobile.model.OnFireballFavoriteListener
 import com.example.tp_mobile.model.domain.api.FireballApiController
 import com.example.tp_mobile.utils.SortStyle
+import com.google.android.material.materialswitch.MaterialSwitch
 import kotlinx.coroutines.launch
 
 class FireballListFragment : Fragment(), OnFireballFavoriteListener {
@@ -29,7 +31,10 @@ class FireballListFragment : Fragment(), OnFireballFavoriteListener {
     private lateinit var viewModel: FireballListViewModel
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: CustomFireballAdapter
+    private lateinit var favSwitch: MaterialSwitch
+    private lateinit var favIndicator: ImageView
     private var sortingStyle: SortStyle? = null
+    private var temporaryData = mutableListOf<Fireball>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,6 +56,8 @@ class FireballListFragment : Fragment(), OnFireballFavoriteListener {
 
 
         recyclerView = view.findViewById(R.id.listView)
+        favSwitch = view.findViewById(R.id.favoriteSwitch)
+        favIndicator = view.findViewById(R.id.favorite_indicator)
 
         setUpObserver()
         setUpListener()
@@ -62,7 +69,7 @@ class FireballListFragment : Fragment(), OnFireballFavoriteListener {
         setUpNavigation()
 
 
-        viewModel.fetchFireballDataAdd(20, 0, null)
+        viewModel.fetchFireballData(20, 0, null)
     }
 
     private fun showSortDialog() {
@@ -116,10 +123,6 @@ class FireballListFragment : Fragment(), OnFireballFavoriteListener {
                     R.id.radioEnergyDesc -> {
                         sortFireballs(SortStyle.RADIATED_ENERGY_DESC)
                     }
-
-                    R.id.radioFavorites -> {
-                        sortFireballs(SortStyle.FAVORITES)
-                    }
                 }
             }
         }
@@ -129,7 +132,29 @@ class FireballListFragment : Fragment(), OnFireballFavoriteListener {
 
     fun sortFireballs(sortStyle: SortStyle) {
         sortingStyle = sortStyle
-        viewModel.fetchFireballData(20, 0, sortingStyle)
+        adapter.sortData(sortStyle)
+    }
+
+    fun toggleFavorites(showFavorites: Boolean){
+        if(showFavorites){
+            viewModel.getFavorites().observe(viewLifecycleOwner){
+                for (fireball in it){
+                    fireball.isFavorite = true
+                }
+                temporaryData = adapter.getData().toMutableList()
+                adapter.replaceAllData(it.toMutableList())
+                adapter.sortData(sortingStyle ?: SortStyle.NONE)
+            }
+
+            favIndicator.setImageResource(R.drawable.baseline_favorite_24)
+            favIndicator.setColorFilter(R.color.red)
+        }else{
+            adapter.replaceAllData(temporaryData.toMutableList())
+            adapter.sortData(sortingStyle ?: SortStyle.NONE)
+
+            favIndicator.setImageResource(R.drawable.baseline_favorite_border_24)
+            favIndicator.setColorFilter(R.color.black)
+        }
     }
 
     override fun onFavoriteClicked(fireball: Fireball, holder: CustomFireballAdapter.FireballViewHolder, position: Int) {
@@ -149,9 +174,15 @@ class FireballListFragment : Fragment(), OnFireballFavoriteListener {
 
 
     private fun setUpListener() {
+        favSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
+            toggleFavorites(isChecked)
+        }
+
         recyclerView.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
-            if (!recyclerView.canScrollVertically(1)) {
-                viewModel.fetchFireballDataAdd(20, viewModel.items.value?.size ?: 0, sortingStyle)
+            if(!favSwitch.isChecked){
+                if (!recyclerView.canScrollVertically(1)) {
+                    viewModel.fetchFireballDataAdd(20, viewModel.items.value?.size ?: 0, sortingStyle)
+                }
             }
         }
     }

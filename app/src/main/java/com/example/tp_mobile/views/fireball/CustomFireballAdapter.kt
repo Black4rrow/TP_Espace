@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tp_mobile.model.Fireball
 import com.example.tp_mobile.R
 import com.example.tp_mobile.model.OnFireballFavoriteListener
+import com.example.tp_mobile.utils.SortStyle
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -52,7 +53,7 @@ class CustomFireballAdapter(
         holder.speedTextView.text = "${fireball?.vel ?: "?"} km/s"
         holder.powerTextView.text = "${fireball?.energy ?: "?"} J"
 
-        if (fireball.isFavorite) {
+        if (fireball.isFavorite!!) {
             holder.favButton.setImageResource(R.drawable.baseline_favorite_24)
             holder.favButton.setColorFilter(R.color.red)
         } else {
@@ -87,6 +88,49 @@ class CustomFireballAdapter(
         data.clear()
         data.addAll(newData)
         notifyDataSetChanged()
+    }
+
+    fun sortData(sortStyle: SortStyle){
+        when(sortStyle){
+            SortStyle.NONE ->{
+
+            }
+            SortStyle.DATE_ASC -> {
+                val sortedData = data.sortedBy { it.date }
+                replaceAllData(sortedData.toMutableList())
+            }
+
+            SortStyle.DATE_DESC -> {
+                val sortedData = data.sortedByDescending { it.date }
+                replaceAllData(sortedData.toMutableList())
+            }
+
+            SortStyle.SPEED_ASC -> {
+                val sortedData = data.sortedBy { it.vel }
+                replaceAllData(sortedData.toMutableList())
+            }
+
+            SortStyle.SPEED_DESC -> {
+                val sortedData = data.sortedByDescending { it.vel }
+                replaceAllData(sortedData.toMutableList())
+            }
+
+            SortStyle.RADIATED_ENERGY_ASC -> {
+                val sortedData = data.sortedBy { it.energy }
+                replaceAllData(sortedData.toMutableList())
+            }
+
+            SortStyle.RADIATED_ENERGY_DESC -> {
+                val sortedData = data.sortedByDescending { it.energy }
+                replaceAllData(sortedData.toMutableList())
+            }
+        }
+
+        notifyDataSetChanged()
+    }
+
+    fun getData(): MutableList<Fireball>{
+        return data
     }
 
     fun clearData(){
