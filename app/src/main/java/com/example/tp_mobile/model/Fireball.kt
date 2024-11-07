@@ -21,9 +21,8 @@ data class Fireball(
     @SerializedName("lat") var lat: Int = 0,
     @SerializedName("lon_dir") var lonDir: String? = null,
     @SerializedName("lat_dir") var latDir: String? = null,
-    @SerializedName("coord") var coord: Coord? = Coord(),
 ) : Serializable {
-    var isFavorite: Boolean = false
+    var isFavorite: Boolean? = false
 
     fun getDBId(): String {
         return this.date + "-" +  this.lon + "-" + this.lat

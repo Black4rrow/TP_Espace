@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.example.tp_mobile.model.Fireball
 import com.example.tp_mobile.model.FireballEntity
 
 @Dao
@@ -18,4 +19,7 @@ interface FireballDao {
 
     @Query("SELECT * FROM favorites WHERE compositeKey = :compositeKey LIMIT 1")
     suspend fun getFavoriteById(compositeKey: String): FireballEntity?
+
+    @Query("SELECT * FROM favorites")
+    suspend fun getAllFavorites(): List<Fireball>
 }

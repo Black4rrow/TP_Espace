@@ -20,6 +20,11 @@ object FireballRepository {
         emit(list)
     }
 
+    suspend fun getFavorites(): List<Fireball> {
+        fireballDao = AppDatabase.getInstance().fireballDao()
+        return fireballDao.getAllFavorites()
+    }
+
     suspend fun insertFavorite(fireball: Fireball){
         fireballDao = AppDatabase.getInstance().fireballDao()
         val fireballEntity = fireballToEntity(fireball)
