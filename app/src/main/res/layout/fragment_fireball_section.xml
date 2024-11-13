@@ -1,23 +1,251 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".views.fireball.FireballSectionFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+
     <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:text="FIREBALL"
+        android:textColor="@color/white"
+        android:layout_marginStart="5dp"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <!-- the last ones-->
+    <TextView
+        android:id="@+id/subtitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:text="The last ones"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleText" />
+
+    <LinearLayout
+        android:id="@+id/timelineSection"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Section"
-        android:textColor="@color/white"/>
+        android:layout_height="250dp"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@id/subtitleText"
+        android:background="@color/md_theme_tertiaryContainer_transparent">
 
-<Button
-    android:id="@+id/listButton"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:backgroundTint="@color/button_background_theme"
-    android:textColor="@color/button_text_theme"
-    android:text="Tout Voir"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent">
 
-</FrameLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <FrameLayout
+                    android:id="@+id/rectangle1"
+                    android:layout_width="20dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@color/md_theme_onPrimary" />
+
+                <FrameLayout
+                    android:id="@+id/rectangle01"
+                    android:layout_width="120dp"
+                    android:layout_height="10dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="35dp"
+                    android:background="@color/md_theme_onPrimary" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="07/11/2024"
+                    android:textColor="@color/md_theme_onPrimary"
+                    android:layout_marginStart="35dp"/>
+
+                <FrameLayout
+                    android:id="@+id/cercle1"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/first_background_circle"
+                    android:elevation="1dp" />
+
+
+                <FrameLayout
+                    android:id="@+id/rectangle2"
+                    android:layout_width="20dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@color/md_theme_inversePrimary" />
+
+                <FrameLayout
+                    android:id="@+id/rectangle02"
+                    android:layout_width="120dp"
+                    android:layout_height="10dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="95dp"
+                    android:background="@color/md_theme_inversePrimary" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Last days 12 ago"
+                    android:textColor="@color/md_theme_onPrimary"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginTop="75dp"/>
+
+                <FrameLayout
+                    android:id="@+id/cercle2"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="85dp"
+                    android:background="@drawable/second_background_circle"
+                    android:elevation="1dp" />
+
+
+                <FrameLayout
+                    android:id="@+id/rectangle3"
+                    android:layout_width="20dp"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="100dp"
+                    android:background="@color/md_theme_onTertiaryContainer" />
+
+                <FrameLayout
+                    android:id="@+id/rectangle03"
+                    android:layout_width="120dp"
+                    android:layout_height="10dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="155dp"
+                    android:background="@color/md_theme_onTertiaryContainer" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="18 hours ago"
+                    android:textColor="@color/md_theme_onPrimary"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginTop="135dp"/>
+                <FrameLayout
+                    android:id="@+id/cercle3"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="145dp"
+                    android:background="@drawable/third_background_circle"
+                    android:elevation="1dp" />
+
+
+                <FrameLayout
+                    android:id="@+id/rectangle4"
+                    android:layout_width="20dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="10dp"
+
+                    android:layout_marginTop="160dp"
+                    android:background="@color/md_theme_onTertiaryFixedVariant" />
+
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/dateRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:scrollbars="vertical" />
+
+    </LinearLayout>
+    <!-- best power-->
+    <TextView
+        android:id="@+id/titleBestPower"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/timelineSection"
+        android:text="The best power"
+        android:textColor="@color/md_theme_onPrimary"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="5dp"/>
+
+    <LinearLayout
+        android:id="@+id/bestPowerSection"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@id/titleBestPower"
+        android:background="@color/md_theme_tertiaryContainer_transparent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/powerRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:scrollbars="vertical" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/gradient_background" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginTop="60dp"
+                android:background="@drawable/gradient_background" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginTop="60dp"
+                android:background="@drawable/gradient_background" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/listButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/button_background_theme"
+        android:text="See all"
+        android:textColor="@color/button_text_theme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bestPowerSection" />
+</androidx.constraintlayout.widget.ConstraintLayout>
