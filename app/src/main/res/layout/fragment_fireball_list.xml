@@ -46,7 +46,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:text="All reports"
-            android:textSize="18sp"/>
+            android:textSize="18sp"
+            android:fontFamily="@font/lato_bold"/>
 
         <ImageButton
             android:id="@+id/sortButton"

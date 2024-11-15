@@ -29,7 +29,8 @@
                     android:text="Create your account"
                     android:id="@+id/newAccountText"
                     android:textSize="30dp"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:fontFamily="@font/lato_bold"/>
 
                 <EditText
                     android:layout_width="match_parent"
@@ -40,8 +41,9 @@
                     android:hint="Mail"
                     android:textColor="@color/black"
                     android:drawablePadding="8dp"
-                    android:drawableLeft="@drawable/baseline_person_24"/>
-                />
+                    android:drawableLeft="@drawable/baseline_person_24"
+                    android:fontFamily="@font/lato_regular"/>
+
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -54,7 +56,7 @@
                     android:textColor="@color/black"
                     android:drawablePadding="8dp"
                     android:drawableLeft="@drawable/baseline_lock_24"
-                    />
+                    android:fontFamily="@font/lato_regular"/>
 
                 <EditText
                     android:layout_width="match_parent"
@@ -68,7 +70,8 @@
                     android:textColor="@color/black"
                     android:drawablePadding="8dp"
                     android:drawableLeft="@drawable/baseline_lock_24"
-                    />
+                    android:fontFamily="@font/lato_regular"/>
+
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -76,7 +79,8 @@
                     android:id="@+id/registerButton"
                     android:textSize="18dp"
                     android:layout_marginTop="30dp"
-                    app:cornerRadius = "20dp"/>
+                    app:cornerRadius = "20dp"
+                    android:fontFamily="@font/lato_black"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -106,7 +110,8 @@
                 android:background="@color/blue"
                 android:text="Sign up with Google"
                 android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:fontFamily="@font/lato_regular"/>
 
         </LinearLayout>
     </LinearLayout>

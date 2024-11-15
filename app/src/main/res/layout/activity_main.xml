@@ -28,7 +28,7 @@
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="@android:dimen/app_icon_size"
-            />
+            android:fontFamily="@font/orbitron_medium"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -58,7 +58,7 @@
                 android:layout_marginStart="5dp"
                 android:textColor="@color/white"
                 android:textSize="30dp"
-                />
+                android:fontFamily="@font/lato_black"/>
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -82,7 +82,6 @@
                     android:onClick="onFireballButtonClick" />
             </FrameLayout>
         </LinearLayout>
-
     </ScrollView>
 
 

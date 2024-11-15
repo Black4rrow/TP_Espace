@@ -30,7 +30,8 @@
             app:layout_constraintEnd_toStartOf="@id/favIcon"
             android:text="Report date :\n"
             android:textColor="@color/md_theme_onPrimary"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:fontFamily="@font/lato_bold"/>
 
         <ImageButton
             android:id="@+id/favIcon"
@@ -77,7 +78,8 @@
                     android:text="Radiated energy"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    android:fontFamily="@font/lato_bold"/>
 
                 <TextView
                     android:id="@+id/radiated_value"
@@ -89,7 +91,8 @@
                     app:layout_constraintBottom_toBottomOf="@id/radiated_image"
                     app:layout_constraintTop_toTopOf="@id/radiated_image"
                     android:layout_marginStart="8dp"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    android:fontFamily="@font/lato_regular"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </FrameLayout>
@@ -126,7 +129,8 @@
                     android:text="Impact energy"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    android:fontFamily="@font/lato_bold"/>
 
                 <TextView
                     android:id="@+id/impact_value"
@@ -138,7 +142,8 @@
                     app:layout_constraintBottom_toBottomOf="@id/impact_image"
                     app:layout_constraintTop_toTopOf="@id/impact_image"
                     android:layout_marginStart="8dp"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    android:fontFamily="@font/lato_regular"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </FrameLayout>
 
@@ -174,7 +179,8 @@
                     android:text="Altitude"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    android:fontFamily="@font/lato_bold"/>
 
                 <TextView
                     android:id="@+id/altitude_value"
@@ -186,7 +192,8 @@
                     app:layout_constraintBottom_toBottomOf="@id/altitude_image"
                     app:layout_constraintTop_toTopOf="@id/altitude_image"
                     android:layout_marginStart="8dp"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    android:fontFamily="@font/lato_regular"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </FrameLayout>
 
@@ -222,7 +229,8 @@
                     android:text="Radius of crater"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    android:fontFamily="@font/lato_bold"/>
 
                 <TextView
                     android:id="@+id/radius_value"
@@ -234,7 +242,8 @@
                     app:layout_constraintBottom_toBottomOf="@id/radius_image"
                     app:layout_constraintTop_toTopOf="@id/radius_image"
                     android:layout_marginStart="8dp"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    android:fontFamily="@font/lato_regular"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </FrameLayout>
 
@@ -270,7 +279,8 @@
                     android:text="Coordinates"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    android:fontFamily="@font/lato_bold"/>
 
                 <TextView
                     android:id="@+id/coordinates_value"
@@ -281,7 +291,8 @@
                     app:layout_constraintStart_toEndOf="@id/coordinates_image"
                     app:layout_constraintBottom_toBottomOf="@id/coordinates_image"
                     app:layout_constraintTop_toTopOf="@id/coordinates_image"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    android:fontFamily="@font/lato_regular"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </FrameLayout>
 
@@ -317,7 +328,8 @@
                     android:text="Speed"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    android:fontFamily="@font/lato_bold"/>
 
                 <TextView
                     android:id="@+id/speed_value"
@@ -329,7 +341,8 @@
                     app:layout_constraintBottom_toBottomOf="@id/speed_image"
                     app:layout_constraintTop_toTopOf="@id/speed_image"
                     android:layout_marginStart="8dp"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    android:fontFamily="@font/lato_regular"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </FrameLayout>
@@ -344,7 +357,8 @@
             android:layout_marginEnd="48dp"
             android:text="See on map"
             android:backgroundTint="@color/md_theme_onPrimary"
-            android:textColor="@color/primary_text_default_material_light"/>
+            android:textColor="@color/primary_text_default_material_light"
+            android:fontFamily="@font/lato_black"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -38,7 +38,8 @@
         android:text="Sorting"
         android:textColor="@color/md_theme_onPrimaryContainer"
         android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:fontFamily="@font/lato_black"/>
 
     <!-- RadioGroup avec les options de tri -->
     <RadioGroup
@@ -56,7 +57,8 @@
             android:text="None"
             android:textColor="@color/md_theme_onPrimaryContainer"
             android:textSize="18sp"
-            android:paddingStart="8dp"/>
+            android:paddingStart="8dp"
+            android:fontFamily="@font/lato_regular"/>
 
         <RadioButton
             android:id="@+id/radioDateAsc"
@@ -65,7 +67,8 @@
             android:text="Date (Asc)"
             android:textColor="@color/md_theme_onPrimaryContainer"
             android:textSize="18sp"
-            android:paddingStart="8dp" />
+            android:paddingStart="8dp"
+            android:fontFamily="@font/lato_regular"/>
 
         <RadioButton
             android:id="@+id/radioDateDesc"
@@ -74,7 +77,8 @@
             android:text="Date (Desc)"
             android:textColor="@color/md_theme_onPrimaryContainer"
             android:textSize="18sp"
-            android:paddingStart="8dp" />
+            android:paddingStart="8dp"
+            android:fontFamily="@font/lato_regular"/>
 
         <RadioButton
             android:id="@+id/radioSpeedAsc"
@@ -83,7 +87,8 @@
             android:text="Speed (Asc)"
             android:textColor="@color/md_theme_onPrimaryContainer"
             android:textSize="18sp"
-            android:paddingStart="8dp" />
+            android:paddingStart="8dp"
+            android:fontFamily="@font/lato_regular"/>
 
         <RadioButton
             android:id="@+id/radioSpeedDesc"
@@ -92,7 +97,8 @@
             android:text="Speed (Desc)"
             android:textColor="@color/md_theme_onPrimaryContainer"
             android:textSize="18sp"
-            android:paddingStart="8dp" />
+            android:paddingStart="8dp"
+            android:fontFamily="@font/lato_regular"/>
 
         <RadioButton
             android:id="@+id/radioEnergyAsc"
@@ -101,7 +107,8 @@
             android:text="Radiated Energy (Asc)"
             android:textColor="@color/md_theme_onPrimaryContainer"
             android:textSize="18sp"
-            android:paddingStart="8dp" />
+            android:paddingStart="8dp"
+            android:fontFamily="@font/lato_regular"/>
 
         <RadioButton
             android:id="@+id/radioEnergyDesc"
@@ -110,7 +117,8 @@
             android:text="Radiated Energy (Desc)"
             android:textColor="@color/md_theme_onPrimaryContainer"
             android:textSize="18sp"
-            android:paddingStart="8dp" />
+            android:paddingStart="8dp"
+            android:fontFamily="@font/lato_regular"/>
     </RadioGroup>
 
     <!-- Bouton de confirmation -->
@@ -121,5 +129,6 @@
         android:layout_marginTop="16dp"
         android:backgroundTint="@color/md_theme_onPrimaryContainer"
         android:text="Confirmer"
-        android:textColor="@color/md_theme_primaryContainer"/>
+        android:textColor="@color/md_theme_primaryContainer"
+        android:fontFamily="@font/lato_black"/>
 </LinearLayout>
