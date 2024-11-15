@@ -15,7 +15,7 @@
     app:layout_constraintTop_toTopOf="parent">
 
     <LinearLayout
-        android:id="@+id/speed_layout"
+        android:id="@+id/best_power_date_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
@@ -27,13 +27,13 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageView
-            android:id="@+id/date_icon"
+            android:id="@+id/best_power_date_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/date_icon"
             />
         <TextView
-            android:id="@+id/date_text"
+            android:id="@+id/best_power_date_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
@@ -46,7 +46,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/power_layout"
+        android:id="@+id/best_power_speed_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
@@ -58,18 +58,18 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageView
-            android:id="@+id/power_icon"
+            android:id="@+id/best_power_speed_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/power_icon"/>
+            android:src="@drawable/speed_icon"/>
 
         <TextView
-            android:id="@+id/power_text"
+            android:id="@+id/best_power_speed_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textSize="22sp"
-            android:text="37 500e10 J"
+            android:text="17 km/h"
             android:layout_marginStart="8dp"/>
     </LinearLayout>
 </LinearLayout>

@@ -28,13 +28,13 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageView
-            android:id="@+id/speed_icon"
+            android:id="@+id/top_date_speed_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/speed_icon"
             />
         <TextView
-            android:id="@+id/speed_text"
+            android:id="@+id/top_date_speed_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
@@ -59,13 +59,13 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageView
-            android:id="@+id/power_icon"
+            android:id="@+id/top_date_power_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/power_icon"/>
 
         <TextView
-            android:id="@+id/power_text"
+            android:id="@+id/top_date_power_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
