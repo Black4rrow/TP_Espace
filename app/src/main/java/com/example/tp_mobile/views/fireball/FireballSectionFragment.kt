@@ -77,7 +77,7 @@ class FireballSectionFragment : Fragment() {
 
     }
     fun getThreeBestFireballs(sortStyle: SortStyle){
-        viewModel.fetchFireballData(3, 0, sortStyle)
+        return viewModel.fetchFireballData(3, 0, sortStyle)
     }
 
 

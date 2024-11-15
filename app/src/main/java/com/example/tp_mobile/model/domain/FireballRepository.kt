@@ -45,9 +45,13 @@ object FireballRepository {
         val firebaseAuth = FirebaseAuth.getInstance()
         val currentUser = firebaseAuth.currentUser
 
+        if(currentUser == null){
+            return false
+        }
+
         fireballDao = AppDatabase.getInstance().fireballDao()
         val compositeKey = fireball.getDBId()
-        return fireballDao.getFavoriteById(compositeKey, currentUser!!.uid) != null
+        return fireballDao.getFavoriteById(compositeKey, currentUser.uid) != null
     }
 
     private fun fireballToEntity(fireball: Fireball): FireballEntity {
