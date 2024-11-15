@@ -15,6 +15,7 @@ data class FireballEntity(
     var lat: Int,
     var lonDir: String?,
     var latDir: String?,
+    var userId: String?
 ) : Serializable {
     @PrimaryKey
     var compositeKey: String = "$date-$lon-$lat"

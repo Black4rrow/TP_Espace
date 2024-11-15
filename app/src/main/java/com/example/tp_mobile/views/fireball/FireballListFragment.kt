@@ -1,6 +1,7 @@
 package com.example.tp_mobile.views.fireball
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -23,7 +24,9 @@ import com.example.tp_mobile.model.Fireball
 import com.example.tp_mobile.model.OnFireballFavoriteListener
 import com.example.tp_mobile.model.domain.api.FireballApiController
 import com.example.tp_mobile.utils.SortStyle
+import com.example.tp_mobile.views.login.LoginActivity
 import com.google.android.material.materialswitch.MaterialSwitch
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 
 class FireballListFragment : Fragment(), OnFireballFavoriteListener {
@@ -35,6 +38,7 @@ class FireballListFragment : Fragment(), OnFireballFavoriteListener {
     private lateinit var favIndicator: ImageView
     private var sortingStyle: SortStyle? = null
     private var temporaryData = mutableListOf<Fireball>()
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -136,6 +140,15 @@ class FireballListFragment : Fragment(), OnFireballFavoriteListener {
     }
 
     fun toggleFavorites(showFavorites: Boolean){
+        val firebaseAuth = FirebaseAuth.getInstance()
+        val currentUser = firebaseAuth.currentUser
+
+        if(currentUser == null){
+            connectionPopupForFavorites()
+            favSwitch.isChecked = false
+            return
+        }
+
         if(showFavorites){
             viewModel.getFavorites().observe(viewLifecycleOwner){
                 for (fireball in it){
@@ -158,6 +171,14 @@ class FireballListFragment : Fragment(), OnFireballFavoriteListener {
     }
 
     override fun onFavoriteClicked(fireball: Fireball, holder: CustomFireballAdapter.FireballViewHolder, position: Int) {
+        val firebaseAuth = FirebaseAuth.getInstance()
+        val currentUser = firebaseAuth.currentUser
+
+        if(currentUser == null){
+            connectionPopupForFavorites()
+            return
+        }
+
         viewModel.isFavorite(fireball).observe( viewLifecycleOwner){
             if (it) {
                 viewModel.removeFavorite(fireball)
@@ -222,6 +243,27 @@ class FireballListFragment : Fragment(), OnFireballFavoriteListener {
         }
     }
 
+
+    private fun connectionPopupForFavorites() {
+        val builder = AlertDialog.Builder(requireContext())
+        val inflater = LayoutInflater.from(requireContext())
+        val dialogView = inflater.inflate(R.layout.connect_popup, null)
+        builder.setView(dialogView)
+
+        val dialog = builder.create()
+
+        dialogView.findViewById<Button>(R.id.btnYes).setOnClickListener {
+            val intent = Intent(requireContext(), LoginActivity::class.java)
+            startActivity(intent)
+            dialog.dismiss()
+        }
+
+        dialogView.findViewById<Button>(R.id.btnNo).setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
+    }
 
     companion object {
         @JvmStatic

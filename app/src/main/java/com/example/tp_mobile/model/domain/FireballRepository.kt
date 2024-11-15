@@ -7,6 +7,7 @@ import com.example.tp_mobile.model.domain.api.FireballApiController
 import com.example.tp_mobile.model.domain.database.AppDatabase
 import com.example.tp_mobile.model.domain.database.dao.FireballDao
 import com.example.tp_mobile.utils.SortStyle
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -21,8 +22,11 @@ object FireballRepository {
     }
 
     suspend fun getFavorites(): List<Fireball> {
+        val firebaseAuth = FirebaseAuth.getInstance()
+        val currentUser = firebaseAuth.currentUser
+
         fireballDao = AppDatabase.getInstance().fireballDao()
-        return fireballDao.getAllFavorites()
+        return fireballDao.getAllFavorites(currentUser!!.uid)
     }
 
     suspend fun insertFavorite(fireball: Fireball){
@@ -38,12 +42,18 @@ object FireballRepository {
     }
 
     suspend fun isFavorite(fireball: Fireball): Boolean {
+        val firebaseAuth = FirebaseAuth.getInstance()
+        val currentUser = firebaseAuth.currentUser
+
         fireballDao = AppDatabase.getInstance().fireballDao()
         val compositeKey = fireball.getDBId()
-        return fireballDao.getFavoriteById(compositeKey) != null
+        return fireballDao.getFavoriteById(compositeKey, currentUser!!.uid) != null
     }
 
     private fun fireballToEntity(fireball: Fireball): FireballEntity {
+        val firebaseAuth = FirebaseAuth.getInstance()
+        val currentUser = firebaseAuth.currentUser
+
         return FireballEntity(
             date = fireball.date!!,
             energy = fireball.energy,
@@ -54,6 +64,7 @@ object FireballRepository {
             lat = fireball.lat,
             lonDir = fireball.lonDir,
             latDir = fireball.latDir,
+            userId = currentUser?.uid
         )
     }
 

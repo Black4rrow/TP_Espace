@@ -12,6 +12,7 @@ import com.example.tp_mobile.model.domain.FireballRepository
 import com.example.tp_mobile.model.domain.api.FireballApiController
 import com.example.tp_mobile.model.domain.database.dao.FireballDao
 import com.example.tp_mobile.utils.SortStyle
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 
@@ -24,14 +25,19 @@ class FireballListViewModel : ViewModel() {
     var fireballsList: MutableList<Fireball> = emptyList<Fireball>().toMutableList()
 
     fun fetchFireballData(limit: Int, offset: Int, sortStyle: SortStyle?) {
+        val firebaseAuth = FirebaseAuth.getInstance()
+        val currentUser = firebaseAuth.currentUser
+
         viewModelScope.launch {
             FireballRepository.getFireball(limit, offset, sortStyle).catch {
                 Log.e("FireballListViewModel", "Error fetching data", it)
             }.collect {
-                for(fireball in it){
-                 if(FireballRepository.isFavorite(fireball)){
-                     fireball.isFavorite = true
-                 }
+                if(currentUser != null){
+                    for(fireball in it){
+                        if(FireballRepository.isFavorite(fireball)){
+                            fireball.isFavorite = true
+                        }
+                    }
                 }
                 _items.postValue(it)
             }
@@ -39,13 +45,18 @@ class FireballListViewModel : ViewModel() {
     }
 
     fun fetchFireballDataAdd(limit: Int, offset: Int, sortStyle: SortStyle?) {
+        val firebaseAuth = FirebaseAuth.getInstance()
+        val currentUser = firebaseAuth.currentUser
+
         viewModelScope.launch {
             FireballRepository.getFireball(limit, offset, sortStyle).catch {
                 Log.e("FireballListViewModel", "Error fetching data", it)
             }.collect {
-                for(fireball in it){
-                    if(FireballRepository.isFavorite(fireball)){
-                        fireball.isFavorite = true
+                if(currentUser != null){
+                    for(fireball in it){
+                        if(FireballRepository.isFavorite(fireball)){
+                            fireball.isFavorite = true
+                        }
                     }
                 }
                 val newList = _items.value.orEmpty().toMutableList()
