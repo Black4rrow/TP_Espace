@@ -11,7 +11,9 @@ import com.example.tp_mobile.databinding.ActivityMainBinding
 import com.example.tp_mobile.views.APODNavigationControllerActivity
 import com.example.tp_mobile.views.FireballNavigationControllerActivity
 import com.example.tp_mobile.views.login.LoginActivity
+import com.example.tp_mobile.views.login.LogoutRegisterActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
 
@@ -50,10 +52,22 @@ class MainActivity : AppCompatActivity() {
                     }
 
                     R.id.profile -> {
-                        val intent = Intent(this, LoginActivity::class.java)
-                        startActivity(intent)
-                        overridePendingTransition(0,0)
-                        true
+
+                        val firebaseAuth = FirebaseAuth.getInstance()
+                        val currentUser = firebaseAuth.currentUser
+
+                        if (currentUser != null) {
+                            val intent = Intent(this, LogoutRegisterActivity::class.java)
+                            startActivity(intent)
+                            overridePendingTransition(0, 0)
+                            true
+                        } else {
+                            val intent = Intent(this, LoginActivity::class.java)
+                            startActivity(intent)
+                            overridePendingTransition(0, 0)
+                            true
+                        }
+
                     }
 
                     else -> false
