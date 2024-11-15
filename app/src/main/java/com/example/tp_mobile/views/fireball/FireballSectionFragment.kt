@@ -8,16 +8,26 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.replace
+import androidx.recyclerview.widget.RecyclerView
 import com.example.tp_mobile.MainActivity
 import com.example.tp_mobile.R
+import com.example.tp_mobile.utils.SortStyle
 
 
 class FireballSectionFragment : Fragment() {
 
+    private lateinit var viewModel: FireballListViewModel
+
+    private lateinit var powerRecyclerView: RecyclerView
+    private lateinit var powerAdapter: PowerAdapter
+
+    private lateinit var dateRecyclerView: RecyclerView
+    private lateinit var dateAdapter: PowerAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
+
         }
     }
 
@@ -41,6 +51,10 @@ class FireballSectionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        powerRecyclerView = view.findViewById(R.id.powerRecyclerView)
+        dateRecyclerView = view.findViewById(R.id.dateRecyclerView)
+
+
         view.findViewById<Button>(R.id.listButton).setOnClickListener {
             val parentFragmentTransaction = parentFragmentManager.beginTransaction()
             parentFragmentTransaction.replace(
@@ -48,6 +62,7 @@ class FireballSectionFragment : Fragment() {
                 FireballListFragment.newInstance()
             )
             parentFragmentTransaction.commit()
+
         }
 
 
@@ -61,5 +76,11 @@ class FireballSectionFragment : Fragment() {
 
 
     }
+    fun getThreeBestFireballs(sortStyle: SortStyle){
+        viewModel.fetchFireballData(3, 0, sortStyle)
+    }
+
+
+
 
 }

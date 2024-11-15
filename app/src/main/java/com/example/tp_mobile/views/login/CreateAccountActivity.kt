@@ -67,7 +67,7 @@ class CreateAccountActivity : AppCompatActivity() {
 
                             createAccountViewModel.createAccount(
                                 mail,
-                                password.hashCode().toString(),
+                                password,
                                 sharedPreferences,
                                 this@CreateAccountActivity
                             )
