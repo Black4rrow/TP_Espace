@@ -73,11 +73,16 @@ class LoginActivity : AppCompatActivity() {
             }
 
         }
-
+        binding.linkRegister.setOnClickListener(){
+            val intent = Intent(this, CreateAccountActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         binding.signInGoogle.setOnClickListener {
             loginViewModel.signInWithGoogle(this@LoginActivity)
         }
+
     }
 
 
