@@ -22,7 +22,6 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Bouton de connexion
         binding.loginButton.setOnClickListener {
             val inputMail = binding.mail
             val inputPassword = binding.password
@@ -39,6 +38,7 @@ class LoginActivity : AppCompatActivity() {
             } else if (password.length < 6) {
                 inputPassword.error = "Votre mot de passe doit contenir au moins 6 caractères"
             } else {
+                //a changer
                 loginViewModel.viewModelScope.launch {
                     val loginSuccessful = loginViewModel.login(mail, password)
                     withContext(Dispatchers.Main) {
@@ -63,17 +63,16 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-        // Lien vers la création d’un compte
         binding.linkRegister.setOnClickListener {
             val intent = Intent(this, CreateAccountActivity::class.java)
             startActivity(intent)
             finish()
         }
 
-        binding.linkRegister.setOnClickListener(){
-            val intent = Intent(this, CreateAccountActivity::class.java)
-            startActivity(intent)
-            finish()
+        binding.signInGoogle.setOnClickListener(){
+            loginViewModel.signInWithGoogle(this)
         }
+
+
     }
 }
