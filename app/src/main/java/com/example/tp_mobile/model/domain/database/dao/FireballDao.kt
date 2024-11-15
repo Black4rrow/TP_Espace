@@ -17,9 +17,9 @@ interface FireballDao {
     @Delete
     suspend fun deleteFavorite(fireball: FireballEntity)
 
-    @Query("SELECT * FROM favorites WHERE compositeKey = :compositeKey LIMIT 1")
-    suspend fun getFavoriteById(compositeKey: String): FireballEntity?
+    @Query("SELECT * FROM favorites WHERE compositeKey = :compositeKey AND userId = :userId LIMIT 1")
+    suspend fun getFavoriteById(compositeKey: String, userId: String): FireballEntity?
 
-    @Query("SELECT * FROM favorites")
-    suspend fun getAllFavorites(): List<Fireball>
+    @Query("SELECT * FROM favorites WHERE userId = :userId")
+    suspend fun getAllFavorites(userId: String): List<Fireball>
 }

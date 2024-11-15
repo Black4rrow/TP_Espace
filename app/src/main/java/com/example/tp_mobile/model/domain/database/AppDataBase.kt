@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.example.tp_mobile.model.FireballEntity
 import com.example.tp_mobile.model.domain.database.dao.FireballDao
 
-@Database(entities = [FireballEntity::class], version = 2)
+@Database(entities = [FireballEntity::class], version = 3)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun fireballDao(): FireballDao
 
