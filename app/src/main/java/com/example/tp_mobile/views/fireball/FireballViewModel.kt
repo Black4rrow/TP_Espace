@@ -44,6 +44,7 @@ class FireballListViewModel : ViewModel() {
         }
     }
 
+
     fun fetchFireballDataAdd(limit: Int, offset: Int, sortStyle: SortStyle?) {
         val firebaseAuth = FirebaseAuth.getInstance()
         val currentUser = firebaseAuth.currentUser
