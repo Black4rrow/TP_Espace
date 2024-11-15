@@ -3,7 +3,6 @@ package com.example.tp_mobile.views.fireball
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tp_mobile.R
@@ -12,7 +11,6 @@ import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
 class PowerAdapter(private val itemList: List<Fireball>) : RecyclerView.Adapter<PowerAdapter.PowerViewHolder>() {
-
     inner class PowerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val dateTextView: TextView = itemView.findViewById(R.id.best_power_date_text)
 
