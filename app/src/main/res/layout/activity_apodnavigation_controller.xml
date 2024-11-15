@@ -41,7 +41,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/lato_bold"/>
 
                 <TextView
                     android:id="@+id/image_date"
@@ -53,7 +54,8 @@
                     android:layout_marginTop="16dp"
                     android:textColor="@color/md_theme_onPrimary"
                     android:textSize="14sp"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:fontFamily="@font/lato_regular"/>
                 
                 <FrameLayout
                     android:id="@+id/media_container"
@@ -95,8 +97,8 @@
             android:layout_marginTop="16dp"
             android:textColor="@color/md_theme_onPrimary"
             android:textSize="14sp"
-            android:textStyle="italic|bold"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            android:fontFamily="@font/lato_bolditalic"/>
 
             <TextView
                 android:id="@+id/image_copyright"
@@ -108,8 +110,8 @@
                 android:layout_marginTop="4dp"
                 android:textColor="@color/md_theme_onPrimary"
                 android:textSize="14sp"
-                android:textStyle="italic"
-                android:textAlignment="center"/>
+                android:textAlignment="center"
+                android:fontFamily="@font/lato_italic"/>
 
         <TextView
             android:id="@+id/explanation"
@@ -121,9 +123,9 @@
             app:layout_constraintTop_toBottomOf="@id/image_copyright"
             android:textSize="32sp"
             android:textColor="@color/md_theme_onPrimary"
-            android:textStyle="bold"
             android:gravity="center"
-            android:layout_marginTop="24dp"/>
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/lato_black"/>
 
 
 
@@ -140,7 +142,9 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     android:letterSpacing="0.11"
                     android:lineSpacingExtra="1dp"
-                    android:paddingBottom="32dp"/>
+                    android:paddingBottom="32dp"
+                    android:fontFamily="@font/lato_regular"
+                    android:justificationMode="inter_word"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

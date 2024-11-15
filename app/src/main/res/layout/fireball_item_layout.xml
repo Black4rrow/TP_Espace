@@ -20,7 +20,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/fav_button"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="48dp" />
+        android:layout_marginStart="48dp"
+        android:fontFamily="@font/lato_bold"/>
 
     <ImageButton
         android:id="@+id/fav_button"
@@ -62,7 +63,8 @@
             android:textColor="@color/white"
             android:textSize="22sp"
             android:text="18 km/s"
-            android:layout_marginStart="8dp"/>
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/lato_regular"/>
     </LinearLayout>
 
     <LinearLayout
@@ -89,7 +91,8 @@
             android:textColor="@color/white"
             android:textSize="22sp"
             android:text="37 500e10 J"
-            android:layout_marginStart="8dp"/>
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/lato_regular"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
