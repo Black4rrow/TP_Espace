@@ -1,5 +1,6 @@
 package com.example.tp_mobile.views.fireball
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -73,6 +74,7 @@ class FireballViewFragment : Fragment() {
         setUpNavigation()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun updateFireballView() {
         binding.reportDate.text = "Report date : \n${formatDate(fireball?.date ?: "")}"
         binding.radiatedValue.text = "${fireball?.energy ?: "?"}e10 J"

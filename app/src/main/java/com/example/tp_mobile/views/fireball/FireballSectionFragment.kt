@@ -8,12 +8,14 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.replace
 import com.example.tp_mobile.MainActivity
 import com.example.tp_mobile.R
+import com.example.tp_mobile.utils.SortStyle
 
 
 class FireballSectionFragment : Fragment() {
+
+    private lateinit var viewModel: FireballListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,6 +62,9 @@ class FireballSectionFragment : Fragment() {
         }
 
 
+    }
+    fun getThreeBestFireballs(sortStyle: SortStyle){
+        viewModel.fetchFireballData(3, 0, sortStyle)
     }
 
 }
