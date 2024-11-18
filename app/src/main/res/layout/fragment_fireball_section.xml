@@ -73,12 +73,15 @@
                     android:layout_marginTop="60dp"
                     android:background="@color/md_theme_onPrimary" />
                 <TextView
+                    android:id="@+id/last_one_date_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="35dp"
+                    android:textSize="18sp"
                     android:text="07/11/2024"
                     android:textColor="@color/md_theme_onPrimary"
-                    android:layout_marginStart="35dp"/>
+                    android:layout_marginStart="35dp"
+ />
 
                 <FrameLayout
                     android:id="@+id/cercle1"
@@ -106,12 +109,14 @@
                     android:layout_marginTop="125dp"
                     android:background="@color/md_theme_inversePrimary" />
                 <TextView
+                    android:id="@+id/last_one_date_text2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Last days 12 ago"
+                    android:textSize="18sp"
                     android:textColor="@color/md_theme_onPrimary"
                     android:layout_marginStart="35dp"
-                    android:layout_marginTop="105dp"/>
+                    android:layout_marginTop="100dp"/>
 
                 <FrameLayout
                     android:id="@+id/cercle2"
@@ -139,12 +144,14 @@
                     android:layout_marginTop="195dp"
                     android:background="@color/md_theme_onTertiaryContainer" />
                 <TextView
+                    android:id="@+id/last_one_date_text3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="18 hours ago"
+                    android:textSize="18sp"
                     android:textColor="@color/md_theme_onPrimary"
                     android:layout_marginStart="35dp"
-                    android:layout_marginTop="175dp"/>
+                    android:layout_marginTop="170dp"/>
                 <FrameLayout
                     android:id="@+id/cercle3"
                     android:layout_width="30dp"
