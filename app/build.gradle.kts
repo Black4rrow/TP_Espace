@@ -16,6 +16,7 @@ android {
     buildFeatures {
         viewBinding = true
         dataBinding = true
+        buildConfig = true
     }
 
     defaultConfig {
@@ -32,6 +33,22 @@ android {
         }
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    flavorDimensions += "env"
+    productFlavors {
+        create("develop") {
+            dimension = "env"
+            applicationIdSuffix = ".dev"
+            versionNameSuffix = "-dev"
+            buildConfigField("String", "API_KEY", "\"cle_dev\"")
+        }
+        create("space"){
+            dimension = "env"
+            applicationIdSuffix = ".space"
+            versionNameSuffix = "-space"
+            buildConfigField("String", "API_KEY", "\"cle_space\"")
+        }
     }
 
     buildTypes {
