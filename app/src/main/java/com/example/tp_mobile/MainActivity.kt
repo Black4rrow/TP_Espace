@@ -34,8 +34,9 @@ class MainActivity : AppCompatActivity() {
             overridePendingTransition(0,0)
         }
 
-        setUpNavBar()
+        binding.versionTextView.text = BuildConfig.VERSION_NAME
 
+        setUpNavBar()
     }
 
     private fun setUpNavBar() {

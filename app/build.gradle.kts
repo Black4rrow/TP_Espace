@@ -40,13 +40,13 @@ android {
             dimension = "env"
             applicationIdSuffix = ".dev"
             versionNameSuffix = "-dev"
-            buildConfigField("String", "API_KEY", "\"cle_dev\"")
+            buildConfigField("String", "version", "\"${versionName}\"")
         }
         create("space"){
             dimension = "env"
             applicationIdSuffix = ".space"
             versionNameSuffix = "-space"
-            buildConfigField("String", "API_KEY", "\"cle_space\"")
+            buildConfigField("String", "version", "\"${versionName}\"")
         }
     }
 
