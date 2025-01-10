@@ -42,10 +42,16 @@ android {
             versionNameSuffix = "-dev"
             buildConfigField("String", "version", "\"${versionName}\"")
         }
-        create("space"){
+        create("preProd"){
             dimension = "env"
-            applicationIdSuffix = ".space"
-            versionNameSuffix = "-space"
+            applicationIdSuffix = ".preProd"
+            versionNameSuffix = "-preProd"
+            buildConfigField("String", "version", "\"${versionName}\"")
+        }
+        create("prod"){
+            dimension = "env"
+            applicationIdSuffix = ".prod"
+            versionNameSuffix = "-prod"
             buildConfigField("String", "version", "\"${versionName}\"")
         }
     }

@@ -8,6 +8,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import android.os.Handler
 import android.os.Looper
+import android.view.View
+import android.widget.ImageView
 import com.example.tp_mobile.views.login.LoginActivity
 
 class SplashScreen : AppCompatActivity() {
@@ -32,5 +34,15 @@ class SplashScreen : AppCompatActivity() {
             overridePendingTransition(0,0)
         }, DELAY.toLong())
 
+        if(BuildConfig.FLAVOR == "develop"){
+            findViewById<ImageView>(R.id.developImage).visibility = View.VISIBLE
+            findViewById<ImageView>(R.id.preProdImage).visibility = View.GONE
+        }else if(BuildConfig.FLAVOR == "preProd"){
+            findViewById<ImageView>(R.id.developImage).visibility = View.GONE
+            findViewById<ImageView>(R.id.preProdImage).visibility = View.VISIBLE
+        }else if(BuildConfig.FLAVOR == "prod"){
+            findViewById<ImageView>(R.id.developImage).visibility = View.GONE
+            findViewById<ImageView>(R.id.preProdImage).visibility = View.GONE
+        }
     }
 }

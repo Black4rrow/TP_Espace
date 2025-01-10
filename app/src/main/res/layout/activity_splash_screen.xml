@@ -22,4 +22,25 @@
         app:layout_constraintWidth_percent="1.5"
         app:lottie_speed="1.5"/>
 
+    <ImageView
+        android:id="@+id/preProdImage"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="128dp"
+        android:src="@drawable/test"/>
+
+    <ImageView
+        android:id="@+id/developImage"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="128dp"
+        android:src="@drawable/setting"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
