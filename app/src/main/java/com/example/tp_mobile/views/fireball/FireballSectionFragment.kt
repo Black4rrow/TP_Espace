@@ -63,8 +63,8 @@ class FireballSectionFragment : Fragment() {
         dateText3 = view.findViewById(R.id.last_one_date_text3)
 
 
-
-
+        viewModel.fetchFireballData(3, 0, SortStyle.DATE_DESC)
+        viewModel.fetchFireballDataForTwo(3, 0, SortStyle.DATE_DESC,3, 0, SortStyle.RADIATED_ENERGY_DESC)
 
         powerAdapter = PowerAdapter(
             onClick = { fireball ->
@@ -80,7 +80,7 @@ class FireballSectionFragment : Fragment() {
         powerRecyclerView.adapter = powerAdapter
 
 
-        dateAdapter = DateAdapter(onClick = { fireball ->
+            dateAdapter = DateAdapter(onClick = { fireball ->
             val parentFragmentTransaction = parentFragmentManager.beginTransaction()
             parentFragmentTransaction.replace(
                 R.id.fireballFragmentContainer,
@@ -93,7 +93,7 @@ class FireballSectionFragment : Fragment() {
         dateRecyclerView.adapter = dateAdapter
 
 
-        viewModel.items.observe(viewLifecycleOwner) { fireballList ->
+        viewModel.secondItems.observe(viewLifecycleOwner) { fireballList ->
             if (fireballList.isNullOrEmpty()) {
                 Toast.makeText(requireContext(), "Aucune Fireball trouvée", Toast.LENGTH_SHORT).show()
                 powerAdapter.updateData(emptyList())
@@ -132,7 +132,6 @@ class FireballSectionFragment : Fragment() {
         }
 
 
-        viewModel.fetchFireballData(3, 0, SortStyle.DATE_DESC)
         viewModel.items.observe(viewLifecycleOwner) { fireballList ->
             if (fireballList.isNullOrEmpty()) {
                 Toast.makeText(requireContext(), "Aucune Fireball trouvée", Toast.LENGTH_SHORT).show()
