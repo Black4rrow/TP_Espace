@@ -35,7 +35,9 @@ class CreateAccountViewModel : ViewModel() {
         auth = Firebase.auth
         auth.createUserWithEmailAndPassword(mail, password).await()
     }
-
+    fun signInWithGoogle(context: Context) {
+        Toast.makeText(context, "The code on the official documentation is deprecated !", Toast.LENGTH_SHORT).show()
+    }
 
 
 
