@@ -13,10 +13,10 @@ class DateAdapter(private val itemList: List<Fireball>) : RecyclerView.Adapter<D
 
     inner class DateViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val speedTextView: TextView = itemView.findViewById(R.id.speed_text)
-        val speedImageView: ImageView = itemView.findViewById(R.id.speed_icon)
+        val speedImageView: ImageView = itemView.findViewById(R.id.speed_hint)
 
         val powerTextView: TextView = itemView.findViewById(R.id.power_text)
-        val powerImageView: ImageView = itemView.findViewById(R.id.power_icon)
+        val powerImageView: ImageView = itemView.findViewById(R.id.power_hint)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DateViewHolder {

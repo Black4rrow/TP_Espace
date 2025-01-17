@@ -48,7 +48,6 @@ class CustomFireballAdapter(
         val fireball = data[position]
 
         holder.dateTextView.text = formatDate(fireball.date)
-        holder.dateTextView.paintFlags = holder.dateTextView.paintFlags or android.graphics.Paint.UNDERLINE_TEXT_FLAG
 
         holder.speedTextView.text = "${fireball?.vel ?: "?"} km/s"
         holder.powerTextView.text = "${fireball?.energy ?: "?"} J"
