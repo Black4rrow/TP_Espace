@@ -25,7 +25,9 @@ import com.example.tp_mobile.databinding.ActivityApodnavigationControllerBinding
 import com.example.tp_mobile.model.Apod
 import com.example.tp_mobile.views.apod.ApodViewModel
 import com.example.tp_mobile.views.login.LoginActivity
+import com.example.tp_mobile.views.login.LogoutRegisterActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -174,10 +176,22 @@ class APODNavigationControllerActivity : AppCompatActivity() {
                     }
 
                     R.id.profile -> {
-                        val intent = Intent(this, LoginActivity::class.java)
-                        startActivity(intent)
-                        overridePendingTransition(0, 0)
-                        true
+
+                        val firebaseAuth = FirebaseAuth.getInstance()
+                        val currentUser = firebaseAuth.currentUser
+
+                        if (currentUser != null) {
+                            val intent = Intent(this, LogoutRegisterActivity::class.java)
+                            startActivity(intent)
+                            overridePendingTransition(0, 0)
+                            true
+                        } else {
+                            val intent = Intent(this, LoginActivity::class.java)
+                            startActivity(intent)
+                            overridePendingTransition(0, 0)
+                            true
+                        }
+
                     }
 
                     else -> false

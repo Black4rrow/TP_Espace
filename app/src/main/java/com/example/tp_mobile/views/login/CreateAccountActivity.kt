@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -44,7 +45,6 @@ class CreateAccountActivity : AppCompatActivity() {
 
             lifecycleScope.launch {
 
-                // Vérification des erreurs de saisie
                 when {
                     mail.isBlank() -> {
                         inputMail.error = "Veuillez svp renseigner votre adresse mail"
@@ -106,7 +106,14 @@ class CreateAccountActivity : AppCompatActivity() {
             }
 
         }
+        val backButton: ImageButton = binding.back
 
+        backButton.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            startActivity(intent)
+            finish()
+        }
 
     }
 }

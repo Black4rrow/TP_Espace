@@ -8,7 +8,10 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.viewModelScope
 import com.example.tp_mobile.MainActivity
+import com.example.tp_mobile.R
 import com.example.tp_mobile.databinding.ActivityLoginBinding
+import com.example.tp_mobile.views.APODNavigationControllerActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -16,6 +19,7 @@ import kotlinx.coroutines.withContext
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private val loginViewModel: LoginViewModel by viewModels()
+    private lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,4 +79,34 @@ class LoginActivity : AppCompatActivity() {
 
 
     }
+    private fun setUpNavBar() {
+        bottomNavigationView = findViewById(R.id.navBar)
+        bottomNavigationView.selectedItemId = R.id.profile
+
+        bottomNavigationView.setOnItemSelectedListener {
+            try {
+                when (it.itemId) {
+
+                    R.id.apod -> {
+                        val intent = Intent(this, APODNavigationControllerActivity::class.java)
+                        startActivity(intent)
+                        overridePendingTransition(0, 0)
+                        true
+                    }
+
+                    R.id.home -> {
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+                        overridePendingTransition(0, 0)
+                        true
+                    }
+
+                    else -> false
+                }
+            } catch (e: Exception) {
+                throw e
+            }
+        }
+    }
+
 }
