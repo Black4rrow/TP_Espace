@@ -22,5 +22,6 @@ class LoginViewModel : ViewModel() {
     }
 
     fun signInWithGoogle(context: Context) {
-        Toast.makeText(context, "J'arrive pas, Mme Firebase est pas au top en ce moment", Toast.LENGTH_SHORT).show()    }
+        Toast.makeText(context, "The code on the official documentation is deprecated !", Toast.LENGTH_SHORT).show()
+    }
 }

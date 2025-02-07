@@ -8,6 +8,7 @@
 
 <LinearLayout
     android:layout_width="wrap_content"
+    android:minWidth="148dp"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="#B7ADC2"
@@ -19,8 +20,8 @@
         android:id="@+id/speed_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginTop="4dp"
         android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/power_layout"
@@ -38,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:textSize="22sp"
+            android:textSize="18sp"
             android:text="18 km/s"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/fav_button"
@@ -50,8 +51,9 @@
         android:id="@+id/power_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
         android:gravity="center"
         app:layout_constraintStart_toEndOf="@id/speed_layout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,7 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:textSize="22sp"
+            android:textSize="18sp"
             android:text="37 500e10 J"
             android:layout_marginStart="8dp"/>
     </LinearLayout>

@@ -5,7 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@drawable/sort_popup_background"
+    android:background="@color/md_theme_primaryContainer"
     android:padding="16dp">
 
     <LinearLayout

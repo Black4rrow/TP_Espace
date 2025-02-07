@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -44,22 +45,21 @@ class CreateAccountActivity : AppCompatActivity() {
 
             lifecycleScope.launch {
 
-                // Vérification des erreurs de saisie
                 when {
                     mail.isBlank() -> {
-                        inputMail.error = "Veuillez svp renseigner votre adresse mail"
+                        inputMail.error = "Please enter your e-mail address"
                     }
                     !Regex(emailRegex).matches(mail) -> {
-                        inputMail.error = "Veuillez svp renseigner une adresse mail valide"
+                        inputMail.error = "Please enter a valid e-mail address"
                     }
                     password.isBlank() -> {
-                        inputPassword.error = "Veuillez svp renseigner votre mot de passe"
+                        inputPassword.error = "Please enter your password"
                     }
                     password.length < 6 -> {
-                        inputPassword.error = "Votre mot de passe doit contenir au minimum 6 caractères"
+                        inputPassword.error = "Your password must contain at least 6 characters"
                     }
                     password != confirmPassword -> {
-                        inputConfirmPassword.error = "Les mots de passe ne correspondent pas"
+                        inputConfirmPassword.error = "Passwords don't match"
                     }
                     else -> {
 
@@ -75,7 +75,7 @@ class CreateAccountActivity : AppCompatActivity() {
                             withContext(Dispatchers.Main) {
                                 Toast.makeText(
                                     this@CreateAccountActivity,
-                                    "Compte créé avec succès",
+                                    "Account created successfully !",
                                     Toast.LENGTH_SHORT
                                 ).show()
 
@@ -87,7 +87,7 @@ class CreateAccountActivity : AppCompatActivity() {
                         } catch (e: FirebaseAuthUserCollisionException) {
                             if (e.errorCode == "ERROR_EMAIL_ALREADY_IN_USE") {
                                 withContext(Dispatchers.Main) {
-                                    inputMail.error = "L'adresse e-mail est déjà utilisée."
+                                    inputMail.error = "The e-mail address is already in use."
                                 }
                                 return@launch
                             }
@@ -96,7 +96,7 @@ class CreateAccountActivity : AppCompatActivity() {
                             withContext(Dispatchers.Main) {
                                 Toast.makeText(
                                     this@CreateAccountActivity,
-                                    "Erreur lors de la création du compte : ${e.message}",
+                                    "Account creation error : ${e.message}",
                                     Toast.LENGTH_LONG
                                 ).show()
                             }
@@ -106,7 +106,20 @@ class CreateAccountActivity : AppCompatActivity() {
             }
 
         }
+        binding.signUpButton.setOnClickListener{
+            createAccountViewModel.signInWithGoogle(this)
+        }
 
+
+
+        val backButton: ImageButton = binding.back
+
+        backButton.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            startActivity(intent)
+            finish()
+        }
 
     }
 }

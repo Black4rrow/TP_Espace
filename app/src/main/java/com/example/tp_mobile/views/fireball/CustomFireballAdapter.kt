@@ -1,21 +1,15 @@
 package com.example.tp_mobile.views.fireball
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
-import androidx.constraintlayout.motion.widget.Debug
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tp_mobile.model.Fireball
 import com.example.tp_mobile.R
+import com.example.tp_mobile.model.Fireball
 import com.example.tp_mobile.model.OnFireballFavoriteListener
 import com.example.tp_mobile.utils.SortStyle
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
@@ -48,7 +42,6 @@ class CustomFireballAdapter(
         val fireball = data[position]
 
         holder.dateTextView.text = formatDate(fireball.date)
-        holder.dateTextView.paintFlags = holder.dateTextView.paintFlags or android.graphics.Paint.UNDERLINE_TEXT_FLAG
 
         holder.speedTextView.text = "${fireball?.vel ?: "?"} km/s"
         holder.powerTextView.text = "${fireball?.energy ?: "?"} J"
@@ -62,7 +55,7 @@ class CustomFireballAdapter(
         }
 
         holder.favButton.setOnClickListener {
-            listener.onFavoriteClicked(fireball, holder,position)
+            listener.onFavoriteClicked(fireball, holder, position)
         }
 
         holder.itemView.setOnClickListener {
@@ -84,17 +77,18 @@ class CustomFireballAdapter(
         notifyDataSetChanged()
     }
 
-    fun replaceAllData(newData: MutableList<Fireball>){
+    fun replaceAllData(newData: MutableList<Fireball>) {
         data.clear()
         data.addAll(newData)
         notifyDataSetChanged()
     }
 
-    fun sortData(sortStyle: SortStyle){
-        when(sortStyle){
-            SortStyle.NONE ->{
+    fun sortData(sortStyle: SortStyle) {
+        when (sortStyle) {
+            SortStyle.NONE -> {
 
             }
+
             SortStyle.DATE_ASC -> {
                 val sortedData = data.sortedBy { it.date }
                 replaceAllData(sortedData.toMutableList())
@@ -129,11 +123,11 @@ class CustomFireballAdapter(
         notifyDataSetChanged()
     }
 
-    fun getData(): MutableList<Fireball>{
+    fun getData(): MutableList<Fireball> {
         return data
     }
 
-    fun clearData(){
+    fun clearData() {
         data.clear()
         notifyDataSetChanged()
     }

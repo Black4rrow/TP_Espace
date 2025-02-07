@@ -70,15 +70,18 @@
                     android:layout_width="120dp"
                     android:layout_height="10dp"
                     android:layout_marginStart="30dp"
-                    android:layout_marginTop="55dp"
+                    android:layout_marginTop="60dp"
                     android:background="@color/md_theme_onPrimary" />
                 <TextView
+                    android:id="@+id/last_one_date_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="35dp"
+                    android:textSize="18sp"
                     android:text="07/11/2024"
                     android:textColor="@color/md_theme_onPrimary"
-                    android:layout_marginStart="35dp"/>
+                    android:layout_marginStart="35dp"
+ />
 
                 <FrameLayout
                     android:id="@+id/cercle1"
@@ -106,12 +109,14 @@
                     android:layout_marginTop="125dp"
                     android:background="@color/md_theme_inversePrimary" />
                 <TextView
+                    android:id="@+id/last_one_date_text2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Last days 12 ago"
+                    android:textSize="18sp"
                     android:textColor="@color/md_theme_onPrimary"
                     android:layout_marginStart="35dp"
-                    android:layout_marginTop="105dp"/>
+                    android:layout_marginTop="100dp"/>
 
                 <FrameLayout
                     android:id="@+id/cercle2"
@@ -139,12 +144,14 @@
                     android:layout_marginTop="195dp"
                     android:background="@color/md_theme_onTertiaryContainer" />
                 <TextView
+                    android:id="@+id/last_one_date_text3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="18 hours ago"
+                    android:textSize="18sp"
                     android:textColor="@color/md_theme_onPrimary"
                     android:layout_marginStart="35dp"
-                    android:layout_marginTop="175dp"/>
+                    android:layout_marginTop="170dp"/>
                 <FrameLayout
                     android:id="@+id/cercle3"
                     android:layout_width="30dp"
@@ -217,84 +224,84 @@
             app:layout_constraintTop_toBottomOf="parent">
 
             <ImageView
-                android:id="@+id/date_icon"
+                android:id="@+id/power_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:src="@drawable/date_icon"
+                android:src="@drawable/power_icon"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/date_text"
+                android:id="@+id/bar_power_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
-                android:text="07/11/2024"
+                android:text="30.e10 J"
                 android:textColor="@color/white"
                 android:textSize="22sp"
-                app:layout_constraintStart_toEndOf="@+id/date_icon"
-                app:layout_constraintTop_toTopOf="@+id/date_icon" />
+                app:layout_constraintStart_toEndOf="@+id/power_icon"
+                app:layout_constraintTop_toTopOf="@+id/power_icon" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/best_power1"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:background="@drawable/gradient_background"
-                app:layout_constraintTop_toBottomOf="@+id/date_text" />
+                app:layout_constraintTop_toBottomOf="@+id/bar_power_text" />
 
             <ImageView
-                android:id="@+id/date_icon2"
+                android:id="@+id/power_icon2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/date_icon"
+                android:src="@drawable/power_icon"
                 android:layout_marginTop="30dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/best_power1" />
 
             <TextView
-                android:id="@+id/date_text2"
+                android:id="@+id/bar_power_text2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
-                android:text="07/11/2024"
+                android:text="30.e10 J"
                 android:textColor="@color/white"
                 android:textSize="22sp"
-                app:layout_constraintStart_toEndOf="@+id/date_icon2"
-                app:layout_constraintTop_toTopOf="@+id/date_icon2" />
+                app:layout_constraintStart_toEndOf="@+id/power_icon2"
+                app:layout_constraintTop_toTopOf="@+id/power_icon2" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/best_power2"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:background="@drawable/gradient_background"
-                app:layout_constraintTop_toBottomOf="@+id/date_text2" />
+                app:layout_constraintTop_toBottomOf="@+id/bar_power_text2" />
 
             <ImageView
-                android:id="@+id/date_icon3"
+                android:id="@+id/power_icon3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:src="@drawable/date_icon"
+                android:src="@drawable/power_icon"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/best_power2" />
 
             <TextView
-                android:id="@+id/date_text3"
+                android:id="@+id/bar_power_text3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
-                android:text="07/11/2024"
+                android:text="30.e10 J"
                 android:textColor="@color/white"
                 android:textSize="22sp"
-                app:layout_constraintStart_toEndOf="@+id/date_icon3"
-                app:layout_constraintTop_toTopOf="@+id/date_icon3" />
+                app:layout_constraintStart_toEndOf="@+id/power_icon3"
+                app:layout_constraintTop_toTopOf="@+id/power_icon3" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:background="@drawable/gradient_background"
-                app:layout_constraintTop_toBottomOf="@+id/date_text3" />
+                app:layout_constraintTop_toBottomOf="@+id/bar_power_text3" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
