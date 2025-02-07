@@ -20,7 +20,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp">
-        
+
         <TextView
             android:id="@+id/report_date"
             android:layout_width="0dp"
@@ -43,322 +43,358 @@
             android:src="@drawable/baseline_favorite_border_24"
             android:background="@null"
             app:tint="@color/white"
-            android:scaleType="fitCenter"
-            />
+            android:scaleType="fitCenter" />
 
-        <FrameLayout
-            android:id="@+id/radiated_frame"
-            android:layout_width="0dp"
-            android:layout_height="64dp"
-            app:layout_constraintStart_toStartOf="parent"
+        <GridLayout
+            android:id="@+id/grid_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/report_date"
-            app:layout_constraintEnd_toStartOf="@id/impact_frame"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginTop="32dp">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/radiated_image"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:src="@drawable/radiate_icon"/>
-
-                <TextView
-                    android:id="@+id/radiated_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/md_theme_onPrimary"
-                    android:text="Radiated energy"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/lato_bold"/>
-
-                <TextView
-                    android:id="@+id/radiated_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/md_theme_onPrimary"
-                    android:text="37 500e10 J"
-                    app:layout_constraintStart_toEndOf="@id/radiated_image"
-                    app:layout_constraintBottom_toBottomOf="@id/radiated_image"
-                    app:layout_constraintTop_toTopOf="@id/radiated_image"
-                    android:layout_marginStart="8dp"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/lato_regular"/>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </FrameLayout>
-
-        <FrameLayout
-            android:id="@+id/impact_frame"
-            android:layout_width="0dp"
-            android:layout_height="64dp"
-            app:layout_constraintStart_toEndOf="@id/radiated_frame"
-            app:layout_constraintTop_toBottomOf="@id/report_date"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginTop="32dp">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/impact_image"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:src="@drawable/radiate_icon"/>
-
-                <TextView
-                    android:id="@+id/impact_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/md_theme_onPrimary"
-                    android:text="Impact energy"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/lato_bold"/>
-
-                <TextView
-                    android:id="@+id/impact_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/md_theme_onPrimary"
-                    android:text="37 500e10 J"
-                    app:layout_constraintStart_toEndOf="@id/impact_image"
-                    app:layout_constraintBottom_toBottomOf="@id/impact_image"
-                    app:layout_constraintTop_toTopOf="@id/impact_image"
-                    android:layout_marginStart="8dp"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/lato_regular"/>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </FrameLayout>
-
-        <FrameLayout
-            android:id="@+id/altitude_frame"
-            android:layout_width="0dp"
-            android:layout_height="96dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/impact_frame"
-            app:layout_constraintEnd_toStartOf="@id/impact_frame"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="16dp"
+            android:columnCount="2"
+            android:useDefaultMargins="true"
             android:layout_marginTop="16dp">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <FrameLayout
+                android:id="@+id/radiated_frame"
+                android:layout_width="0dp"
+                android:layout_height="128dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:background="@drawable/rouded_item_view"
+                android:backgroundTint="@color/list_item_background"
+                android:layout_columnWeight="1"
+                >
 
-                <ImageView
-                    android:id="@+id/altitude_image"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:src="@drawable/altitude_icon"/>
-
-                <TextView
-                    android:id="@+id/altitude_text"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/md_theme_onPrimary"
-                    android:text="Altitude"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/lato_bold"/>
+                    android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/altitude_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/md_theme_onPrimary"
-                    android:text="140 m"
-                    app:layout_constraintStart_toEndOf="@id/altitude_image"
-                    app:layout_constraintBottom_toBottomOf="@id/altitude_image"
-                    app:layout_constraintTop_toTopOf="@id/altitude_image"
-                    android:layout_marginStart="8dp"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/lato_regular"/>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </FrameLayout>
+                    <ImageView
+                        android:id="@+id/radiated_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="16dp"
+                        android:alpha=".25"
+                        android:src="@drawable/radiate_icon"/>
 
-        <FrameLayout
-            android:id="@+id/radius_frame"
-            android:layout_width="0dp"
-            android:layout_height="64dp"
-            app:layout_constraintStart_toEndOf="@id/radiated_frame"
-            app:layout_constraintTop_toBottomOf="@id/radiated_frame"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginTop="16dp">
+                    <TextView
+                        android:id="@+id/radiated_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/md_theme_onPrimary"
+                        android:text="Radiated energy"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/radiated_value"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:textSize="16sp"
+                        android:gravity="center"
+                        android:fontFamily="@font/lato_bold"
+                        android:layout_marginTop="8dp"/>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/radiated_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/md_theme_onPrimary"
+                        android:text="37 500e10 J"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/radiated_text"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginStart="8dp"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/lato_regular"/>
 
-                <ImageView
-                    android:id="@+id/radius_image"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:src="@drawable/radius_icon"/>
 
-                <TextView
-                    android:id="@+id/radius_text"
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/impact_frame"
+                android:layout_width="0dp"
+                android:layout_height="128dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:background="@drawable/rouded_item_view"
+                android:backgroundTint="@color/list_item_background"
+                android:layout_columnWeight="1">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/md_theme_onPrimary"
-                    android:text="Radius of crater"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/lato_bold"/>
+                    android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/radius_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/md_theme_onPrimary"
-                    android:text="140 m"
-                    app:layout_constraintStart_toEndOf="@id/radius_image"
-                    app:layout_constraintBottom_toBottomOf="@id/radius_image"
-                    app:layout_constraintTop_toTopOf="@id/radius_image"
-                    android:layout_marginStart="8dp"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/lato_regular"/>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </FrameLayout>
+                    <ImageView
+                        android:id="@+id/impact_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="16dp"
+                        android:alpha=".25"
+                        android:src="@drawable/radiate_icon"/>
 
-        <FrameLayout
-            android:id="@+id/coordinates_frame"
-            android:layout_width="0dp"
-            android:layout_height="128dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/altitude_frame"
-            app:layout_constraintEnd_toStartOf="@id/speed_frame"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginTop="16dp">
+                    <TextView
+                        android:id="@+id/impact_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/md_theme_onPrimary"
+                        android:text="Impact energy"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/impact_value"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:textSize="16sp"
+                        android:gravity="center"
+                        android:fontFamily="@font/lato_bold"/>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/impact_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/md_theme_onPrimary"
+                        android:text="37 500e10 J"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/impact_text"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginStart="8dp"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/lato_regular"/>
 
-                <ImageView
-                    android:id="@+id/coordinates_image"
-                    android:layout_width="96dp"
-                    android:layout_height="96dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:src="@drawable/coordinates_icon"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <TextView
-                    android:id="@+id/coordinates_text"
+            </FrameLayout>
+            <FrameLayout
+                android:id="@+id/altitude_frame"
+                android:layout_width="0dp"
+                android:layout_height="128dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:background="@drawable/rouded_item_view"
+                android:backgroundTint="@color/list_item_background"
+                android:layout_columnWeight="1">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/md_theme_onPrimary"
-                    android:text="Coordinates"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/lato_bold"/>
+                    android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/coordinates_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/md_theme_onPrimary"
-                    android:text="N°61.1\nE°54.8"
-                    app:layout_constraintStart_toEndOf="@id/coordinates_image"
-                    app:layout_constraintBottom_toBottomOf="@id/coordinates_image"
-                    app:layout_constraintTop_toTopOf="@id/coordinates_image"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/lato_regular"/>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </FrameLayout>
+                    <ImageView
+                        android:id="@+id/altitude_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="16dp"
+                        android:alpha=".25"
+                        android:src="@drawable/altitude_icon"/>
 
-        <FrameLayout
-            android:id="@+id/speed_frame"
-            android:layout_width="0dp"
-            android:layout_height="64dp"
-            app:layout_constraintStart_toEndOf="@id/radiated_frame"
-            app:layout_constraintBottom_toBottomOf="@id/coordinates_frame"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginTop="16dp">
+                    <TextView
+                        android:id="@+id/altitude_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/md_theme_onPrimary"
+                        android:text="Altitude"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/altitude_value"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:textSize="16sp"
+                        android:gravity="center"
+                        android:fontFamily="@font/lato_bold"/>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/altitude_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/md_theme_onPrimary"
+                        android:text="140 m"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/altitude_text"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginStart="8dp"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/lato_regular"/>
 
-                <ImageView
-                    android:id="@+id/speed_image"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:src="@drawable/speed_icon"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <TextView
-                    android:id="@+id/speed_text"
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/radius_frame"
+                android:layout_width="0dp"
+                android:layout_height="128dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:background="@drawable/rouded_item_view"
+                android:backgroundTint="@color/list_item_background"
+                android:layout_columnWeight="1">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/md_theme_onPrimary"
-                    android:text="Speed"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/lato_bold"/>
+                    android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/speed_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/md_theme_onPrimary"
-                    android:text="18 km/s"
-                    app:layout_constraintStart_toEndOf="@id/speed_image"
-                    app:layout_constraintBottom_toBottomOf="@id/speed_image"
-                    app:layout_constraintTop_toTopOf="@id/speed_image"
-                    android:layout_marginStart="8dp"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/lato_regular"/>
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <ImageView
+                        android:id="@+id/radius_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="16dp"
+                        android:alpha=".25"
+                        android:src="@drawable/radius_icon"/>
 
-        </FrameLayout>
+                    <TextView
+                        android:id="@+id/radius_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/md_theme_onPrimary"
+                        android:text="Radius of crater \n(theoric)"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/radius_value"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:textSize="16sp"
+                        android:gravity="center"
+                        android:fontFamily="@font/lato_bold"/>
+
+                    <TextView
+                        android:id="@+id/radius_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/md_theme_onPrimary"
+                        android:text="140 m"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/radius_text"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginStart="8dp"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/lato_regular"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/coordinates_frame"
+                android:layout_width="0dp"
+                android:layout_height="128dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:background="@drawable/rouded_item_view"
+                android:backgroundTint="@color/list_item_background"
+                android:layout_columnWeight="1">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/coordinates_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="16dp"
+                        android:alpha=".25"
+                        android:src="@drawable/coordinates_icon"/>
+
+                    <TextView
+                        android:id="@+id/coordinates_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/md_theme_onPrimary"
+                        android:text="Coordinates"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/coordinates_value"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:textSize="16sp"
+                        android:gravity="center"
+                        android:fontFamily="@font/lato_bold"/>
+
+                    <TextView
+                        android:id="@+id/coordinates_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/md_theme_onPrimary"
+                        android:text="N°61.2\nE°54.8"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/coordinates_text"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/lato_regular"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/speed_frame"
+                android:layout_width="0dp"
+                android:layout_height="128dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:background="@drawable/rouded_item_view"
+                android:backgroundTint="@color/list_item_background"
+                android:layout_columnWeight="1">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/speed_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="16dp"
+                        android:alpha=".25"
+                        android:src="@drawable/speed_icon"/>
+
+                    <TextView
+                        android:id="@+id/speed_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/md_theme_onPrimary"
+                        android:text="Speed"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/speed_value"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:textSize="16sp"
+                        android:gravity="center"
+                        android:fontFamily="@font/lato_bold"/>
+
+                    <TextView
+                        android:id="@+id/speed_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/md_theme_onPrimary"
+                        android:text="18 km/s"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/speed_text"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginStart="8dp"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/lato_regular"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </FrameLayout>
+
+        </GridLayout>
 
         <Button
             android:id="@+id/map_button"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/coordinates_frame"
-            android:layout_marginTop="32dp"
-            android:layout_marginStart="48dp"
-            android:layout_marginEnd="48dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/grid_layout"
             android:text="See on map"
+            android:layout_marginTop="16dp"
             android:backgroundTint="@color/md_theme_onPrimary"
             android:textColor="@color/primary_text_default_material_light"
-            android:fontFamily="@font/lato_black"/>
+            android:fontFamily="@font/lato_black" />
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
