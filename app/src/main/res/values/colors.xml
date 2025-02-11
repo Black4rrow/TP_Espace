@@ -146,6 +146,7 @@
     <color name="light_grey">#D0D0D0</color>
     <color name="invisible">#00808080</color>
     <color name="grey">#3C3C3C</color>
+    <color name="list_item_background">#23232E</color>
 
     <color name="blue">#459DE4</color>
     <color name="red">#FF0000</color>
