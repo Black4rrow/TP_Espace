@@ -34,13 +34,13 @@ class LoginActivity : AppCompatActivity() {
             val emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\$"
 
             if (mail.isBlank()) {
-                inputMail.error = "Veuillez renseigner votre adresse mail"
+                inputMail.error = "Please enter your e-mail address"
             } else if (!Regex(emailRegex).matches(mail)) {
-                inputMail.error = "Veuillez renseigner une adresse mail valide"
+                inputMail.error = "Please enter a valid e-mail address"
             } else if (password.isBlank()) {
-                inputPassword.error = "Veuillez renseigner votre mot de passe"
+                inputPassword.error = "Please enter your password"
             } else if (password.length < 6) {
-                inputPassword.error = "Votre mot de passe doit contenir au moins 6 caractères"
+                inputPassword.error = "Your password must contain at least 6 characters"
             } else {
                 //a changer
                 loginViewModel.viewModelScope.launch {
@@ -49,7 +49,7 @@ class LoginActivity : AppCompatActivity() {
                         if (loginSuccessful) {
                             Toast.makeText(
                                 this@LoginActivity,
-                                "Connexion réussie",
+                                "Successful connection",
                                 Toast.LENGTH_SHORT
                             ).show()
                             val intent = Intent(this@LoginActivity, MainActivity::class.java)
@@ -58,7 +58,7 @@ class LoginActivity : AppCompatActivity() {
                         } else {
                             Toast.makeText(
                                 this@LoginActivity,
-                                "Échec de la connexion. Vérifiez vos identifiants.",
+                                "Connection failed. Please check your login details.",
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
@@ -66,7 +66,7 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         }
-
+        setUpNavBar()
         binding.linkRegister.setOnClickListener {
             val intent = Intent(this, CreateAccountActivity::class.java)
             startActivity(intent)
